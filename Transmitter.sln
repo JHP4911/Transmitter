@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{4665A0A4-00AD-4949-9850-6368FA0F52A6}"
 EndProject
@@ -10,6 +10,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransmitterWEB.Tests", "TransmitterWEB.Tests\TransmitterWEB.Tests.csproj", "{622291D1-ECA4-4471-85D8-5D552DB8A9A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bussines", "Bussines\Bussines.csproj", "{73A2E933-8D64-475E-8DCA-ACE3FA08607F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bussiness", "Bussiness", "{30AB7009-5867-40C3-B623-2C48E7E348D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinesTest", "BussinesTest\BussinesTest.csproj", "{3E9074C0-0757-4413-861C-D451A85828B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataLayer", "DataLayer", "{7D479030-0FC6-47F1-AF09-4299C733718D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserLayer", "UserLayer", "{94F71ED1-FA00-48DD-904D-7C47F82F9EA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +41,19 @@ Global
 		{73A2E933-8D64-475E-8DCA-ACE3FA08607F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73A2E933-8D64-475E-8DCA-ACE3FA08607F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73A2E933-8D64-475E-8DCA-ACE3FA08607F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E9074C0-0757-4413-861C-D451A85828B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E9074C0-0757-4413-861C-D451A85828B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E9074C0-0757-4413-861C-D451A85828B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E9074C0-0757-4413-861C-D451A85828B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4665A0A4-00AD-4949-9850-6368FA0F52A6} = {7D479030-0FC6-47F1-AF09-4299C733718D}
+		{0C8A6781-4990-41D6-A963-19BFE611730F} = {94F71ED1-FA00-48DD-904D-7C47F82F9EA0}
+		{622291D1-ECA4-4471-85D8-5D552DB8A9A1} = {94F71ED1-FA00-48DD-904D-7C47F82F9EA0}
+		{73A2E933-8D64-475E-8DCA-ACE3FA08607F} = {30AB7009-5867-40C3-B623-2C48E7E348D5}
+		{3E9074C0-0757-4413-861C-D451A85828B1} = {30AB7009-5867-40C3-B623-2C48E7E348D5}
 	EndGlobalSection
 EndGlobal

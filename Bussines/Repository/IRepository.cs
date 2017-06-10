@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Bussines
@@ -12,11 +13,12 @@ namespace Bussines
         IQueryable<TEntity> GetAll();
 
         TEntity GetById(string Id);
- 
 
-        void Insert(TEntity entity);
 
-        void Update(TEntity entity, bool modify = true);
+        TEntity Insert(TEntity entity);
+        bool InsertAll(IList<TEntity> entities);
+
+        TEntity Update(TEntity entity, bool modify = true);
 
         void Delete(TEntity entity);
         void DeleteFull(TEntity entity);

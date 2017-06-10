@@ -1,5 +1,6 @@
 ﻿using Data;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Data.SqlTypes;
@@ -39,20 +40,42 @@ namespace Bussines
 
         public virtual TEntity GetById(string id)
         {
-            return _dbSet.Find(id);
+            try
+            {
+                var Id = Guid.Parse(id);
+                return _dbSet.Find(Id);
+
+            }
+            catch (FormatException e)
+            {
+                return null;
+            }
         }
 
-
-        public virtual void Insert(TEntity entity)
+        public virtual TEntity Insert(TEntity entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
             _dbSet.Add(entity);
+            SaveChanges();
+            return entity;
         }
 
-        public void Update(TEntity entity, bool modify = true)
+        public virtual bool InsertAll(IList<TEntity> entities)
+        {
+            foreach (var entity in entities)
+            {
+                if (entity == null)
+                    continue;
+                _dbSet.Add(entity);
+            }
+            SaveChanges();
+            return true;
+        }
+
+        public TEntity Update(TEntity entity, bool modify = true)
         {
             if (entity == null)
             {
@@ -61,6 +84,9 @@ namespace Bussines
 
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
+            SaveChanges();
+            return entity;
+
         }
 
         public virtual void Delete(TEntity entity)

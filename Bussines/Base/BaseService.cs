@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -8,12 +9,12 @@ namespace Bussines
     {
         #region Private Fields
 
-        private readonly IRepository<T> _repo;
+        public readonly IRepository<T> _repo;
 
         #endregion Private Fields
 
         #region Public Constructors
-        public DbContext context()
+        public DbContext Context()
         {
             return _repo.Context;
         }
@@ -29,7 +30,7 @@ namespace Bussines
         public virtual void Delete(T entity)
         {
             if (entity == null)
-                throw new ArgumentNullException("object");
+                throw new ArgumentNullException("entity is null");
             _repo.Delete((T)entity);
             _repo.SaveChanges();
         }
@@ -37,7 +38,7 @@ namespace Bussines
         public virtual void DeleteFull(T entity)
         {
             if (entity == null)
-                throw new ArgumentNullException("object");
+                throw new ArgumentNullException("entity is null");
             _repo.DeleteFull((T)entity);
             _repo.SaveChanges();
         }
@@ -52,20 +53,26 @@ namespace Bussines
             return _repo.GetById(id);
         }
 
-        public virtual void Insert(T entity)
+        public virtual T Insert(T entity)
         {
             if (entity == null)
-                throw new ArgumentNullException("object");
+                throw new ArgumentNullException("entity is null");
             _repo.Insert((T)entity);
-            _repo.SaveChanges();
+            return entity;
         }
 
-        public virtual void Update(T entity)
+        public virtual bool InsertAll(IList<T> entities)
+        {
+            if (entities == null)
+                throw new ArgumentNullException("entities are null");            
+            return _repo.InsertAll(entities); 
+        }
+        public virtual T Update(T entity)
         {
             if (entity == null)
-                throw new ArgumentNullException("object");
+                throw new ArgumentNullException("entity is null");
             _repo.Update((T)entity);
-            _repo.SaveChanges();
+            return entity;
         }
 
         #endregion Public Methods

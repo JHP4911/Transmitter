@@ -16,8 +16,9 @@ namespace Data.Entity
         public Guid RegulationId { get; set; }
 
         public CONDITION_TYPE ConditionType { get; set; }
-        public string ConditionValue { get; set; }
+        public string Condition { get; set; }
         public string SetDataFieldValue { get; set; }
+        public string DefaultFieldValue { get; set; }
         public  Regulation Regulation { get; set; }
         public  Field Field { get; set; }
     }

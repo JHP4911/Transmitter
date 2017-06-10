@@ -105,13 +105,14 @@
     <Compile Include="Entity\SetDataField.cs" />
     <Compile Include="Entity\Unit.cs" />
     <Compile Include="Entity\Customer.cs" />
-    <Compile Include="Migrations\201706082218151_TransmitterData.cs" />
-    <Compile Include="Migrations\201706082218151_TransmitterData.Designer.cs">
-      <DependentUpon>201706082218151_TransmitterData.cs</DependentUpon>
+    <Compile Include="FieldValueModel.cs" />
+    <Compile Include="Migrations\201706102019306_TransmitterData.cs" />
+    <Compile Include="Migrations\201706102019306_TransmitterData.Designer.cs">
+      <DependentUpon>201706102019306_TransmitterData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706082227497_TransmitterData1.cs" />
-    <Compile Include="Migrations\201706082227497_TransmitterData1.Designer.cs">
-      <DependentUpon>201706082227497_TransmitterData1.cs</DependentUpon>
+    <Compile Include="Migrations\201706102105060_TransmitterData1.cs" />
+    <Compile Include="Migrations\201706102105060_TransmitterData1.Designer.cs">
+      <DependentUpon>201706102105060_TransmitterData1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,11 +122,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706082218151_TransmitterData.resx">
-      <DependentUpon>201706082218151_TransmitterData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706102019306_TransmitterData.resx">
+      <DependentUpon>201706102019306_TransmitterData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706082227497_TransmitterData1.resx">
-      <DependentUpon>201706082227497_TransmitterData1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706102105060_TransmitterData1.resx">
+      <DependentUpon>201706102105060_TransmitterData1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

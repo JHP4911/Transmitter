@@ -20,7 +20,7 @@ namespace Data.Entity
         public Guid TypeId { get; set; }
         public FieldType FieldType { get; set; }
         public virtual ICollection<FieldValue> FieldValue { get; set; }
-
+        public virtual ICollection<FieldRegulation> FieldRegulation { get; set; }
         public virtual SetDataField SetDataField { get; set; }
 
     }

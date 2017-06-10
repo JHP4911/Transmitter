@@ -58,7 +58,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseService.cs" />
+    <Compile Include="FieldValue\FieldValueService.cs" />
+    <Compile Include="FieldValue\IFieldValueService.cs" />
+    <Compile Include="Unit\UnitService.cs" />
+    <Compile Include="Unit\IUnitService.cs" />
+    <Compile Include="Customer\CustomerService.cs" />
     <Compile Include="Base\IBaseService.cs" />
+    <Compile Include="Customer\ICustomerService.cs" />
+    <Compile Include="Field\FieldService.cs" />
+    <Compile Include="Field\IFieldService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />

@@ -17,5 +17,7 @@ namespace Data.Entity
 
         public  Customer Customer { get; set; }
 
+        public virtual ICollection<Field> Fields { get; set; }
+
     }
 }

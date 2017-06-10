@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -15,11 +16,13 @@ namespace Bussines
 
         T GetById(string id);
 
-        void Insert(T entity);
+        T Insert(T entity);
 
-        void Update(T entity);
+        bool InsertAll(IList<T> entities);
 
-        DbContext context();
+        T Update(T entity);
+
+        DbContext Context();
 
         #endregion Public Methods
     }
