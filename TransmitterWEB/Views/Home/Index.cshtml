@@ -1,24 +1,127 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET{{2*2}}</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿@*<div class="jumbotron">
+        <h1>Transmitter </h1>
+    </div>*@
+<style>
+ 
+    .progressbar {
+       
+        width:100%;
+        padding-left:8px;
+    }
+
+        .progressbar li {
+            float: left;
+            list-style-type: none;
+            height: 20px;
+            background-color: #3C8DBC;
+            width: 30.33%;
+            text-align: center;
+            margin-right:2px;
+        }
+ .act{
+     color:white;
+ }    
+
+
+         
+</style>
+
+
+
+<div class="row body-margin" ng-app="myApp" ng-controller="myCtrl">
+   
+    <div class="row" style="text-align:center">
+            <ul class="progressbar" >
+                <li ng-class="{'act':tabVal==1}">Step 1</li>
+                <li ng-class="{'act':tabVal==2}">Step 2</li>
+                <li ng-class="{'act':tabVal==3}">Step 3</li>
+
+            </ul>
+      
+    </div>
+   
+    @*Group Ekleme*@
+    <div class="row" ng-show="tabVal===1">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th style="width:130px">Grup Adı Giriniz</th>
+                    <td><input type="text" class="form-control" style="border-radius:4px !important;max-width:100%" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    @*Field ekleme*@
+    <div class="row" ng-show="tabVal===2">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th style="width:2px;text-align:center">Field</th>
+                    <th>Field Name</th>
+                    <th>Type</th>
+                </tr>
+                <tr ng-repeat="item in rows">
+                    <th>{{item.id}}</th>
+                    <td>
+                        <input type="text" class="form-control" ng-model="item.fieldName" style="border-radius:4px !important;max-width :100%" />
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @*  <label for="sel1">Select list:</label>*@
+                            <select class="form-control" id="sel1" ng-model="item.fieldType"  style="border-radius:4px!important;max-width:100%">
+                                <option value="String">String</option>
+                                <option value="Location">Location</option>
+                                <option value="Int">Int</option>
+                                <option value="Double">Double</option>
+                            </select>
+                        </div>
+
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div>
+            <a href="#" class="btn btn-success" ng-click="addRow()">Add Row</a>
+        </div>
+    </div>
+
+    @*Api Key Ekleme*@
+    <div class="row" ng-show="tabVal===3">
+        <table class="table">
+            <tr>
+                <th style="width:130px">Apı Key</th>
+                <td><input type="text" class="form-control" style="border-radius:4px !important;max-width :100%" /></td>
+            </tr>
+            <tr>
+                <th>Get Example Write</th>
+                <td><input type="text" class="form-control" style="border-radius:4px !important;;max-width :100%" /></td>
+            </tr>
+            <tr>
+                <th>Read Get Example</th>
+                <td><input type="text" class="form-control" style="border-radius:4px !important;;max-width :100%" /></td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <div class="row" style="text-align:center">
+               <button class="btn btn-default btn-sm btn-block" style="width:100%;text-align:center" ng-click="nextTab()">İleri</button>
+    </div>
+
+
+  
+    <div>
+        <pre>
+{{modelAsJson}}
+</pre>
+    </div>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/App/Home/index.js"></script>
+}
