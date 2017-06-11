@@ -41,7 +41,7 @@
     <![endif]-->
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="skin-blue">
+<body class="skin-blue" ng-app="myApp">
 
     <div class="wrapper">
 
@@ -93,7 +93,7 @@
     <!-- ChartJS 1.0.1 -->
     <script src="~/Scripts/AdminLTE/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
     <script src="~/Scripts/angular.min.js"></script>
-
+    <script src="~/Scripts/App/app.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

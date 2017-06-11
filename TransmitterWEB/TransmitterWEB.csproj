@@ -268,6 +268,7 @@
     <Compile Include="Controllers\_baseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WizardController.cs" />
+    <Compile Include="WebApi\UnitController.cs" />
     <Compile Include="WebApi\_baseApiController.cs" />
     <Compile Include="WebApi\BaseApiController.cs" />
     <Compile Include="WebApi\DataController.cs" />
@@ -855,6 +856,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\App\Wizard\index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1643,7 +1645,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Views\Wizard\Index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

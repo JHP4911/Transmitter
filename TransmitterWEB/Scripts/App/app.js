@@ -1,5 +1,5 @@
 ﻿var app = angular.module("myApp", []);
-app.controller("myCtrl", function ($scope) {
+app.controller("navigationCtrl", function ($scope) {
     $scope.tabVal = 1;
     $scope.counter = 2;
 
