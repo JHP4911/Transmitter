@@ -25,7 +25,7 @@ namespace TransmitterWEB.WebApi
             return _service.GetById(Id);
         }
 
-        public List<T> GetAllCustomer()
+        public List<T> GetAll()
         {
             return _service.GetAll().ToList();
         }

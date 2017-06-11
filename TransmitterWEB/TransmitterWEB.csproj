@@ -271,7 +271,6 @@
     <Compile Include="WebApi\DataController.cs" />
     <Compile Include="WebApi\FieldApiController.cs" />
     <Compile Include="WebApi\CustomerApiController.cs" />
-    <Compile Include="WebApi\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
