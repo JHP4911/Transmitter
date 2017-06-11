@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TransmitterWEB.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : _baseController
     {
         public ActionResult Index()
         {
