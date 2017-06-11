@@ -266,11 +266,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminLteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="WebApi\UnitController.cs" />
     <Compile Include="WebApi\_baseApiController.cs" />
     <Compile Include="WebApi\BaseApiController.cs" />
     <Compile Include="WebApi\DataController.cs" />
-    <Compile Include="WebApi\FieldApiController.cs" />
-    <Compile Include="WebApi\CustomerApiController.cs" />
+    <Compile Include="WebApi\FieldController.cs" />
+    <Compile Include="WebApi\CustomerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

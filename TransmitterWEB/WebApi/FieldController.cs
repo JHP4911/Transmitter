@@ -9,9 +9,9 @@ using Bussines;
 
 namespace TransmitterWEB.WebApi
 {
-    public class FieldApiController : BaseGenerikApiController<Field>
+    public class FieldController : BaseGenerikApiController<Field>
     {
-        public FieldApiController(IFieldService service) : base(service)
+        public FieldController(IFieldService service) : base(service)
         {
             _service = service;
         }
