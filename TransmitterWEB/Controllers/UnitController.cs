@@ -6,12 +6,13 @@ using System.Web.Mvc;
 
 namespace TransmitterWEB.Controllers
 {
-    public class HomeController : _baseController
+    public class UnitController : _baseController
     {
-        public ActionResult Index()
+        // GET: Wizard
+        public ActionResult Index(string id,string name)
         {
-            ViewBag.Title = "DashBoard";
-
+            ViewBag.Title = name;
+            ViewBag.Id = id;
             return View();
         }
     }
