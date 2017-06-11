@@ -700,6 +700,11 @@ h1 .subtitle {
 .nav-pills {
   background-color: #999999;
 }
+
+.nav-pills > li{
+    width:25%;
+   
+}
 .nav-pills > li + li {
   margin-left: 0;
 }

@@ -1,4 +1,4 @@
-﻿app.controller("myCtrl", function ($scope) {
+﻿app.controller("myWizard", function ($scope) {
     $scope.tabVal = 1;
     $scope.counter = 2;
 
