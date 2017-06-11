@@ -4,6 +4,8 @@ using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace Data
 {
@@ -14,8 +16,13 @@ namespace Data
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             // Add custom user claims here
+            userIdentity.AddClaim(new Claim("CustomerId", this.CustomerId.ToString()));
             return userIdentity;
         }
+
+        [ForeignKey("Customer")]
+        public Guid CustomerId { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
