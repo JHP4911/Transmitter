@@ -5,7 +5,7 @@ app.controller("myCtrl", function ($scope) {
 
     $scope.nextTab = function () {
 
-        if ($scope.tabVal < 3) {
+        if ($scope.tabVal < 4) {
             $scope.tabVal++;
         }
 

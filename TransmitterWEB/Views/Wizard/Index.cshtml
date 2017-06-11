@@ -1,6 +1,5 @@
 ﻿
 <div class="row body-margin" ng-app="myApp" ng-controller="myCtrl">
-
     <div class="row">
         <div>
             <ul class="progressbar">
@@ -57,9 +56,7 @@
 
 
     @*Field Kuralları Ekleme*@
-
-
-    <div class="row">
+    <div class="row" ng-show="tabVal===3">
         <div class="table-responsive">
             <table class="table">
                 <tr>
@@ -68,7 +65,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" ng-model="" />
+                        <input type="text" class="form-control" />
                     </td>
                     <td>
                         <select class="form-control" id="sel1" ng-model="item.fieldType">
@@ -81,7 +78,7 @@
     </div>
 
     @*Api Key Ekleme*@
-    <div class="row" ng-show="tabVal===3">
+    <div class="row" ng-show="tabVal===4">
         <table class="table">
             <tr>
                 <th style="width:130px">Apı Key</th>
