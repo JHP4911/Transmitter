@@ -63,7 +63,7 @@ namespace TransmitterWEB.Tests.Api
             BaseGenerikApiController<Customer> controller = new BaseGenerikApiController<Customer>(_service.Object);
 
             // Act
-            var result = controller.GetAllCustomer();
+            var result = controller.GetAll();
             // Assert
             Assert.IsNotNull(result);
         }
