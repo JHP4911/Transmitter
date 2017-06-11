@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TransmitterWEB.Controllers
 {
-    public class WizardController : Controller
+    public class WizardController : _baseController
     {
         // GET: Wizard
         public ActionResult Index()
