@@ -269,9 +269,9 @@
     <Compile Include="Controllers\_baseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WizardController.cs" />
+    <Compile Include="WebApi\BaseApiController.cs" />
     <Compile Include="WebApi\UnitController.cs" />
     <Compile Include="WebApi\_baseApiController.cs" />
-    <Compile Include="WebApi\BaseApiController.cs" />
     <Compile Include="WebApi\DataController.cs" />
     <Compile Include="WebApi\FieldController.cs" />
     <Compile Include="WebApi\CustomerController.cs" />
@@ -331,6 +331,7 @@
     <Content Include="Content\AdminLTE\skins\_all-skins.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-wizard.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -857,7 +858,6 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\App\Wizard\index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

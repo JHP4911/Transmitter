@@ -13,5 +13,9 @@ namespace TransmitterWEB.Controllers
         {
             return View();
         }
+        public ActionResult Wizard()
+        {
+            return View();
+        }
     }
 }

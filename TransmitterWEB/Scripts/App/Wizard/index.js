@@ -1,10 +1,10 @@
-﻿app.controller("myCtrl", function ($scope) {
+﻿app.controller("myWizard", function ($scope) {
     $scope.tabVal = 1;
     $scope.counter = 2;
 
     $scope.nextTab = function () {
 
-        if ($scope.tabVal < 3) {
+        if ($scope.tabVal < 4) {
             $scope.tabVal++;
         }
 
