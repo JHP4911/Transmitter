@@ -1,10 +1,11 @@
-﻿app.controller("myCtrl", function ($scope) {
+﻿var app = angular.module("myApp", []);
+app.controller("navigationCtrl", function ($scope) {
     $scope.tabVal = 1;
     $scope.counter = 2;
 
     $scope.nextTab = function () {
 
-        if ($scope.tabVal < 4) {
+        if ($scope.tabVal < 3) {
             $scope.tabVal++;
         }
 
@@ -16,15 +17,15 @@
         }
     }
 
-    $scope.fieldType = ["String","Location","Int","Double"];
+    $scope.fieldType = ["String", "Location", "Int", "Double"];
 
-    $scope.rows=[{
+    $scope.rows = [{
         id: 1,
         fieldName: "",
         fieldType: "",
 
     }];
-   
+
 
     $scope.addRow = function () {
         $scope.rows.push({
