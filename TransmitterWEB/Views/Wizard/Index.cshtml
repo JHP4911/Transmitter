@@ -1,0 +1,133 @@
+﻿
+<div class="row body-margin" ng-app="myApp" ng-controller="myCtrl">
+
+    <div class="row">
+        <div>
+            <ul class="progressbar">
+                <li ng-class="{'active-tab':tabVal==1}">Step 1</li>
+                <li ng-class="{'active-tab':tabVal==2}">Step 2</li>
+                <li ng-class="{'active-tab':tabVal==3}">Step 3</li>
+                <li ng-class="{'active-tab':tabVal==4}">Step 4</li>
+            </ul>
+        </div>
+    </div>
+
+    @*Group Ekleme*@
+    <div class="row" ng-show="tabVal===1">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th style="width:130px">Grup Adı Giriniz</th>
+                    <td><input type="text" class="form-control" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    @*Field ekleme*@
+    <div class="row" ng-show="tabVal===2">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th style="width:2px;text-align:center">Field</th>
+                    <th>Field Name</th>
+                    <th>Type</th>
+                </tr>
+                <tr ng-repeat="item in rows">
+                    <th>{{item.id}}</th>
+                    <td>
+                        <input type="text" class="form-control" ng-model="item.fieldName" />
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select class="form-control" id="sel1" ng-model="item.fieldType">
+
+                                <option ng-repeat="item in fieldType" value="{{item}}">{{item}} </option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div>
+            <a href="#" class="btn btn-success" ng-click="addRow()">Add Row</a>
+        </div>
+    </div>
+
+
+    @*Field Kuralları Ekleme*@
+
+
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>FieldName</th>
+                    <th>SetField</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" ng-model="" />
+                    </td>
+                    <td>
+                        <select class="form-control" id="sel1" ng-model="item.fieldType">
+                            <option ng-repeat="item in fieldType" value="{{item}}">{{item}} </option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    @*Api Key Ekleme*@
+    <div class="row" ng-show="tabVal===3">
+        <table class="table">
+            <tr>
+                <th style="width:130px">Apı Key</th>
+                <td><input type="text" class="form-control input-radious-max" /></td>
+            </tr>
+            <tr>
+                <th>Get Example Write</th>
+                <td><input type="text" class="form-control input-radious-max"></td>
+            </tr>
+            <tr>
+                <th>Read Get Example</th>
+                <td><input type="text" class="form-control input-radious-max" /></td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <div class="row" style="text-align:right">
+        <table class="table">
+            <tr>
+                <td class="btn-right">
+                    <button class="btn btn-default" ng-click="prevTab()">Geri</button>
+                </td>
+                <td class="btn-left">
+                    <button class="btn btn-default " ng-click="nextTab()">İleri</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <br />
+        <pre>
+{{modelAsJson}}
+</pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+@section Scripts
+{
+    <script src="~/Scripts/App/Wizard/index.js"></script>
+}
