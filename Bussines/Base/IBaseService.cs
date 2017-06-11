@@ -23,6 +23,7 @@ namespace Bussines
         T Update(T entity);
 
         DbContext Context();
+        
 
         #endregion Public Methods
     }

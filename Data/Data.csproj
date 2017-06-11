@@ -59,9 +59,8 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
@@ -105,6 +104,7 @@
     <Compile Include="Entity\SetDataField.cs" />
     <Compile Include="Entity\Unit.cs" />
     <Compile Include="Entity\Customer.cs" />
+    <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="FieldValueModel.cs" />
     <Compile Include="Migrations\201706102019306_TransmitterData.cs" />
     <Compile Include="Migrations\201706102019306_TransmitterData.Designer.cs">
@@ -113,6 +113,10 @@
     <Compile Include="Migrations\201706102105060_TransmitterData1.cs" />
     <Compile Include="Migrations\201706102105060_TransmitterData1.Designer.cs">
       <DependentUpon>201706102105060_TransmitterData1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706111339253_TransmitterData2.cs" />
+    <Compile Include="Migrations\201706111339253_TransmitterData2.Designer.cs">
+      <DependentUpon>201706111339253_TransmitterData2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706102105060_TransmitterData1.resx">
       <DependentUpon>201706102105060_TransmitterData1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706111339253_TransmitterData2.resx">
+      <DependentUpon>201706111339253_TransmitterData2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

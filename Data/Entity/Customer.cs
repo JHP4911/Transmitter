@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Data.Entity
 {
@@ -13,5 +9,7 @@ namespace Data.Entity
         public string Email { get; set; }
 
         public virtual ICollection<Unit> Units { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }       
+
     }
 }

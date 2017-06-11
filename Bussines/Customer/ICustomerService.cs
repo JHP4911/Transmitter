@@ -6,6 +6,8 @@ using System.Linq;
 namespace Bussines
 {
     public interface ICustomerService : IBaseService<Customer>
-    {
+    {   
+        object getCustomerForNavigation(string CustomerId);
+
     }
 }

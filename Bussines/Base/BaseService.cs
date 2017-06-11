@@ -9,7 +9,7 @@ namespace Bussines
     {
         #region Private Fields
 
-        public readonly IRepository<T> _repo;
+        public IRepository<T> _repo;
 
         #endregion Private Fields
 

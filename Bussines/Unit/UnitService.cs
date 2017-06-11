@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Newtonsoft.Json;
 
 namespace Bussines
 {
@@ -15,6 +16,6 @@ namespace Bussines
         {
             _repo = repo;
         }
-
+       
     }
 }
