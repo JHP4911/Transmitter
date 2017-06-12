@@ -1,4 +1,4 @@
-﻿var app = angular.module("myApp", ['nvd3']);
+﻿var app = angular.module("myApp", ['nvd3', 'ngMaterial']);
 app.controller("navigationCtrl", ['$scope', '$http', function ($scope, $http) {
     $scope.tabVal = 1;
     $scope.counter = 2;
