@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -17,9 +18,11 @@ namespace Data.Entity
         public Unit Unit { get; set; }
 
         [ForeignKey("FieldType")]
-        public Guid TypeId { get; set; }
+        public Guid FieldTypeId { get; set; }
         public FieldType FieldType { get; set; }
+        [JsonIgnore]
         public virtual ICollection<FieldValue> FieldValue { get; set; }
+        [JsonIgnore]
         public virtual ICollection<FieldRegulation> FieldRegulation { get; set; }
         public virtual SetDataField SetDataField { get; set; }
 

@@ -51,6 +51,19 @@ namespace Bussines
                 return null;
             }
         }
+        public virtual TEntity GetById(Guid id)
+        {
+            try
+            {
+
+                return _dbSet.Find(id);
+
+            }
+            catch (FormatException e)
+            {
+                return null;
+            }
+        }
 
         public virtual TEntity Insert(TEntity entity)
         {

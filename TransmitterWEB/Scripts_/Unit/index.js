@@ -1,65 +1,62 @@
 ﻿app.controller("unitController", ['$scope', '$http', function ($scope, $http) {
+    $scope.fields = [];
+    $scope.data = [
+        {
+            key: "Short",
+            values: [{
+                "CreateTime": "0001-01-01T00:00:00",
+                "Value": "30"
+            }]
+        }
+    ];
+    $scope.initController = function (Id) {
+        $http.get('/api/Unit/getUnitFieldforCharts/' + Id)
+            .then(function (response) {
+                $scope.fields = response.data;
+                $scope.data = $scope.fields[0].fieldValue;
+                console.log($scope.fields[0].fieldValue);
+
+            });
+    }
+
+    $scope.ticksToDate = function (d) {
+        var now = new Date(d)
+        var str = now.getUTCDate() +
+            "/" + (now.getUTCMonth() + 1).toString() +
+            "/" + now.getUTCFullYear().toString() +
+            " " + now.getUTCHours() +
+            ":" + now.getUTCMinutes();;
+        return str;
+    }
     $scope.options = {
         chart: {
             type: 'lineChart',
-            height: 200,
+            height: 300,
             margin: {
                 top: 20,
                 right: 20,
-                bottom: 40,
+                bottom: 60,
                 left: 55
             },
-            x: function (d) { return d.x; },
-            y: function (d) { return d.y; },
-            xAxis: {                
+            x: function (d) { return d.CreateTime; },
+            y: function (d) { return d.Value; },
+            //  average: function (d) { return d.mean / 100; },
+            xAxis: {
                 rotateLabels: -45,
-                ticks: d3.time.days,
-                axisLabel: '',
+                ticks: 10,
                 tickFormat: function (d) {
-                    return d3.time.format('%Y-%m-%d')(new Date(d));
+                    return d3.time.format('%d/%m/%y')(new Date(d))
                 },
-                showMaxMin: false,
             },
             yAxis: {
-                axisLabel: 'Voltage (v)',
                 tickFormat: function (d) {
-                    return d3.format('.02f')(d);
+                    return d3.format('.0f')(d);
                 },
-                ticks:5
+                ticks: 5
             }
-        }      
+        }
     };
 
 
-    $scope.data = sinAndCos();
 
-    function sinAndCos() {
-        var sin = [], sin2 = [],
-            cos = [];
-
-        var now = new Date();
-        var daysOfYear = [];
-        for (var d = new Date(2012, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
-           // daysOfYear.push(new Date(d));
-            sin.push({ x: new Date(d), y: Math.random(10)*10 });
-        }
-
-        //Data is represented as an array of {x,y} pairs.
-        for (var i = 0; i < 100; i++) {
-           // sin.push({ x: i, y: Math.sin(i / 10) });
-            sin2.push({ x: i, y: i % 10 == 5 ? null : Math.sin(i / 10) * 0.25 + 0.5 });
-            cos.push({ x: i, y: .5 * Math.cos(i / 10 + 2) + Math.random() / 10 });
-        }
-
-        //Line chart data should be sent as an array of series objects.
-        return [
-            {
-                values: sin,      //values - represents the array of {x,y} data points
-                key: 'Sine Wave', //key  - the name of the series.
-                color: '#ff7f0e',  //color - optional: choose your own line color.
-                strokeWidth: 2,
-                classed: 'dashed'
-            }
-        ];
-    };
 }]);
