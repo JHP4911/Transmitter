@@ -1,6 +1,7 @@
-﻿app.controller("myWizard", function ($scope) {
+﻿app.controller("myWizard",['$scope','$http', function ($scope,$http) {
     $scope.tabVal = 1;
     $scope.counter = 2;
+    $scope.showHideVal = false;
 
     $scope.nextTab = function () {
 
@@ -16,24 +17,40 @@
         }
     }
 
-    $scope.fieldType = ["String","Location","Int","Double"];
+    $scope.showHide = function () {
+        
+        $scope.showHideVal = !$scope.showHideVal;
+    }
+
+
+
+    //Field
+    $http.get("api/Field/getFieldType")
+        .then(function (data) {
+            $scope.fieldType = data.data;
+        });
+
+   
+$comparisonType=["<","<=",">",">=",""]
+    
 
     $scope.unit = {
 
         name: "",
+        
         fields: [{
             id: 1,
             fieldName: "",
             fieldType: "",
+            conditionType: "",
+            conditionValue:0,
+            fieldRegulation: "",
+            setDataField: [],
+            defaultValue:0,
         }],
     };
 
-    //$scope.rows=[{
-    //    id: 1,
-    //    fieldName: "",
-    //    fieldType: "",
-
-    //}];
+    
    
 
     $scope.addRow = function () {
@@ -51,4 +68,4 @@
         //console.log("asd");
     }, true);
 
-});
+}]);

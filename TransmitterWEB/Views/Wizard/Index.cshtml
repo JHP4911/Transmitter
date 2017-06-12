@@ -61,8 +61,8 @@
                                         </td>
                                         <td>
                                             <select name="country" class="form-control" ng-model="item.fieldType">
-                                                <option value="{{item}}" ng-repeat="item in fieldType ">
-                                                    {{item}}
+                                                <option value="{{x.Id}}" ng-repeat=" x in fieldType">
+                                                   {{x.Name}}
                                                 </option>
                                             </select>
                                         </td>
@@ -82,20 +82,33 @@
                             <div class="col-sm-10 col-sm-offset-1">
                                 <table class="table">
                                     <tr>
-                                        <td><label>Kurallar</label></td>
-                                        <td><label>SetField</label></td>
+                                        <td><label>Field</label></td>
+                                        <td><label>Condition</label></td>
+                                        <td><label>Condition Value</label></td>
+                                        <td><label>Set Field</label></td>
+                                        <td><label>Default Value</label></td>
                                     </tr>
-                                    <tr>
+                                    <tr ng-repeat="item in unit.fields">
                                         <td>
-                                            <input type="text" class="form-control" placeholder="...">
+                                            <input type="text" ng-model="item.fieldName" class="form-control" placeholder="...">
                                         </td>
                                         <td>
-                                            <select name="country" class="form-control">
-                                                <option value="Afghanistan">Integer  </option>
-                                                <option value="Albania"> String </option>
-                                                <option value="...">...</option>
-                                            </select>
+                                            <input type="text" class="form-control" ng-model="item.comparison" placeholder="...">
                                         </td>
+                                        <td>
+                                            <input type="number" class="form-control" ng-model="item.conditionValue" placeholder="...">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" placeholder="..." ng-click="showHide()">
+                                            <ul ng-show="showHideVal" >
+                                                <li>asd</li>
+                                                <li>asd</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" ng-model="item.defaultValue" placeholder="...">
+                                        </td>
+                                       
                                     </tr>
                                 </table>
                             </div>
