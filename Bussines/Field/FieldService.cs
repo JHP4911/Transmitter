@@ -10,11 +10,17 @@ namespace Bussines
 {
     public class FieldService : BaseService<Field>, IFieldService
     {
-        IRepository<Field> _repo;
-        public FieldService(IRepository<Field> repo) : base(repo)
+        IRepository<FieldType> _fieldTypeRepo;
+        public FieldService(IRepository<Field> repo,
+            IRepository<FieldType> fieldTypeRepo) : base(repo)
         {
             _repo = repo;
+            _fieldTypeRepo = fieldTypeRepo;
         }
 
+        public IList<FieldType> getFeildTypes()
+        {
+            return _fieldTypeRepo.GetAll().ToList();
+        }
     }
 }

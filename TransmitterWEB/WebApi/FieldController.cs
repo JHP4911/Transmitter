@@ -11,9 +11,15 @@ namespace TransmitterWEB.WebApi
 {
     public class FieldController : BaseGenerikApiController<Field>
     {
+        IFieldService _Srv;
         public FieldController(IFieldService service) : base(service)
         {
-            _service = service;
+            _Srv = service;
+        }
+
+        public IList<FieldType> getFieldType()
+        {
+            return _Srv.getFeildTypes();
         }
     }
 }
