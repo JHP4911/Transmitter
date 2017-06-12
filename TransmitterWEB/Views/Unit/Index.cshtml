@@ -1,21 +1,24 @@
-﻿@{
+﻿
+@{
     ViewBag.Breadcrumb = new Breadcrumb(new Crumb[] {
         new Crumb("Unit", "", "fa-dashboard"),
          new Crumb("Unit1", "", "fa-dashboard")
     });
 }
 <div ng-controller="unitController">
+    @*<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>*@
+
     <!-- charts -->
     <div class="row">
         <!-- Line chart -->
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <i class="fa fa-bar-chart-o"></i>
                     <h3 class="box-title">Line Chart</h3>
                 </div>
                 <div class="box-body">
-                    <div id="line-chart" style="height: 200px;"></div>
+                    <nvd3 options='options' data='data'></nvd3>
                 </div>
 
             </div>
@@ -23,68 +26,9 @@
         <!-- /.Line chart -->
     </div>
     <!--/charts-->
+
 </div>
-
-
 
 @section scripts{
     <script src="~/Scripts_/Unit/index.js"></script>
-    <script src="~/Scripts/AdminLTE/plugins/flot/jquery.flot.min.js"></script>
-    <script src="~/Scripts/AdminLTE/plugins/flot/jquery.flot.resize.min.js"></script>
-    <script>
-        $(function () {
-            /*
-             * LINE CHART
-             * ----------
-             */
-            //LINE randomly generated data
-
-            var sin = [], cos = [];
-            for (var i = 0; i < 14; i += 0.5) {
-                sin.push([i, Math.sin(i)]);
-                cos.push([i, Math.cos(i)]);
-            }
-            var line_data1 = {
-                data: sin,
-                color: "#3c8dbc"
-            };
-            var line_data2 = {
-                data: cos,
-                color: "#00c0ef"
-            };
-            $.plot("#line-chart", [line_data1, line_data2], {
-                grid: {
-                    hoverable: true,
-                    borderColor: "#f3f3f3",
-                    borderWidth: 1,
-                    tickColor: "#f3f3f3"
-                },
-                series: {
-                    shadowSize: 0,
-                    lines: {
-                        show: true
-                    },
-                    points: {
-                        show: true
-                    }
-                },
-                lines: {
-                    fill: false,
-                    color: ["#3c8dbc", "#f56954"]
-                },
-                yaxis: {
-                    show: true,
-                },
-                xaxis: {
-                    show: true
-                }
-            });            
-            /* END LINE CHART */
-
-
-
-        });
-
-
-    </script>
 }
