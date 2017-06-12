@@ -99,11 +99,34 @@
                                             <input type="number" class="form-control" ng-model="item.conditionValue" placeholder="...">
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" placeholder="..." ng-click="showHide()">
+
+                                            <md-input-container>
+                                                <label>Vegetables</label>
+                                                <md-select ng-model="selectedVegetables"
+                                                           md-on-close="clearSearchTerm()"
+                                                           data-md-container-class="selectdemoSelectHeader"
+                                                           multiple>
+                                                    <md-select-header class="demo-select-header">
+                                                        <input ng-model="searchTerm"
+                                                               type="search"
+                                                               placeholder="Search for a vegetable.."
+                                                               class="demo-header-searchbox md-text">
+                                                    </md-select-header>
+                                                    <md-optgroup label="vegetables">
+                                                        <md-option ng-value="vegetable" ng-repeat="vegetable in vegetables |
+                                                                    filter:searchTerm">{{vegetable}}
+                                                        </md-option>
+                                                    </md-optgroup>
+                                                </md-select>
+                                            </md-input-container>
+
+                                            @*<input type="text" class="form-control" placeholder="..." ng-click="showHide()">
                                             <ul ng-show="showHideVal" >
                                                 <li>asd</li>
                                                 <li>asd</li>
-                                            </ul>
+                                            </ul>*@
+
+
                                         </td>
                                         <td>
                                             <input type="number" class="form-control" ng-model="item.defaultValue" placeholder="...">
