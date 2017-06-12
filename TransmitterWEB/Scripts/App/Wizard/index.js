@@ -18,16 +18,26 @@
 
     $scope.fieldType = ["String","Location","Int","Double"];
 
-    $scope.rows=[{
-        id: 1,
-        fieldName: "",
-        fieldType: "",
+    $scope.unit = {
 
-    }];
+        name: "",
+        fields: [{
+            id: 1,
+            fieldName: "",
+            fieldType: "",
+        }],
+    };
+
+    //$scope.rows=[{
+    //    id: 1,
+    //    fieldName: "",
+    //    fieldType: "",
+
+    //}];
    
 
     $scope.addRow = function () {
-        $scope.rows.push({
+        $scope.unit.fields.push({
             id: $scope.counter,
             fieldName: "",
             fieldType: ""
@@ -36,7 +46,7 @@
     }
 
     /**********************************************************************/
-    $scope.$watch('rows', function (model) {
+    $scope.$watch('unit', function (model) {
         $scope.modelAsJson = angular.toJson(model, true)
         //console.log("asd");
     }, true);

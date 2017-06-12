@@ -8,7 +8,7 @@
         <div class="wizard-container">
 
             <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                <form action="" method="">
+              
                     <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
                     <div class="wizard-header">
@@ -36,7 +36,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" class="form-control" placeholder="...">
+                                            <input type="text" class="form-control" ng-model="unit.name" placeholder="...">
                                         </td>
                                     </tr>
                                 </table>
@@ -52,18 +52,18 @@
                                         <td><label>Field Name</label></td>
                                         <td><label>Field Type</label></td>
                                     </tr>
-                                    <tr ng-repeat="item in rows">
+                                    <tr ng-repeat="item in unit.fields">
                                         <td>
-                                            <input type="text" class="form-control" ng-model="item.Id" placeholder="...">
+                                            <input type="text" class="form-control" ng-model="item.id" placeholder="...">
                                         </td>
                                         <td>
                                             <input type="text" class="form-control" ng-model="item.fieldName" placeholder="...">
                                         </td>
                                         <td>
                                             <select name="country" class="form-control" ng-model="item.fieldType">
-                                                <option value="Afghanistan">Integer  </option>
-                                                <option value="Albania"> String </option>
-                                                <option value="...">...</option>
+                                                <option value="{{item}}" ng-repeat="item in fieldType ">
+                                                    {{item}}
+                                                </option>
                                             </select>
                                         </td>
                                     </tr>
@@ -143,12 +143,21 @@
                         <div class="clearfix"></div>
                     </div>
 
-                </form>
+               
             </div>
 
 
         </div> <!-- wizard container -->
     </div>
+
+    <!--Silincek-->
+    <br />
+    <div class="row">
+         <pre>
+                {{modelAsJson}}
+</pre>
+    </div>
+    <!--****************************-->
 </div><!-- end row -->
 
 @section Scripts
