@@ -25,7 +25,7 @@ namespace Data.Entity
 
         [ForeignKey("FieldType")]
         public Guid FieldTypeId { get; set; }
-        public FieldType FieldType { get; set; }
+        public virtual FieldType FieldType { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<FieldValue> FieldValue { get; set; }

@@ -5,7 +5,7 @@
          new Crumb("Unit1", "", "fa-dashboard")
     });
 }
-<div ng-controller="unitController" ng-init="initController('@ViewBag.Id')">   
+<div ng-controller="unitController" ng-init="initController('@ViewBag.Id')">
     <div class="row">
         <!-- Line chart -->
         <div ng-repeat="field in fields"
@@ -14,6 +14,15 @@
                 <div class="box-header with-border">
                     <i class="fa fa-bar-chart-o"></i>
                     <h3 class="box-title">{{field.Name}}</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool"
+                                ng-click="sendDashBoard(field.Id)"
+                                data-toggle="tooltip"
+                                data-placement="top" title="Send DashBoard">
+                            <i class="fa fa-share-square-o"></i>
+                        </button>
+                        @*<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                    </div>
                 </div>
                 <div ng-if="field.fieldType!='Location'" class="box-body">
                     <flot dataset="field.fieldValue" options="options" height="300px"></flot>

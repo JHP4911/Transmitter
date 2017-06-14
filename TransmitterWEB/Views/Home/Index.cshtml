@@ -51,6 +51,7 @@
             <div class="box-header with-border">
                 <i class="fa fa-bar-chart-o"></i>
                 <h3 class="box-title">{{field.Name}}</h3>
+
             </div>
             <div ng-if="field.fieldType!='Location'" class="box-body">
                 <flot dataset="field.fieldValue" options="options" height="300px"></flot>

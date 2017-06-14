@@ -13,12 +13,12 @@ namespace Bussines
     public class DashBoardService : BaseService<DashBoard>, IDashBoardService
     {
 
-        IRepository<FieldValue> _fieldValueRepo;
+        IRepository<FieldType> _fieldTypeRepo;
 
         public DashBoardService(IRepository<DashBoard> repo
-           , IRepository<FieldValue> fieldTypeRepo) : base(repo)
+           , IRepository<FieldType> fieldTypeRepo) : base(repo)
         {
-            _fieldValueRepo = fieldTypeRepo;
+            _fieldTypeRepo = fieldTypeRepo;
             _repo = repo;
 
         }
@@ -41,8 +41,9 @@ namespace Bussines
               .ToList()
               .Select(x => new
               {
+                  Id=x.Id,
                   Name = x.Field.Name,
-                  fieldType = x.FieldId.ToString(),//x.Field.FieldType.Name,
+                  fieldType = _fieldTypeRepo.GetById(x.Field.FieldTypeId).Name,
                   fieldValue = new object[]
                   {
                      new {
