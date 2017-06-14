@@ -16,6 +16,12 @@ namespace TransmitterWEB.WebApi
         {
             _srv = service;
         }
+        public HttpResponseMessage getInfo()
+        {
+            //TODO customerId yi al
+            var Id = "3B923E85-E767-480C-82B9-26833A6E178D";            
+            return Request.CreateResponse(HttpStatusCode.OK, _srv.GetInfo(Id));
+        }
         public HttpResponseMessage getCharts()
         {
             //TODO userıd yi al

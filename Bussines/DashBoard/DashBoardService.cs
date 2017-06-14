@@ -14,12 +14,15 @@ namespace Bussines
     {
 
         IRepository<FieldType> _fieldTypeRepo;
+        IRepository<Customer> _customerRepo;
 
-        public DashBoardService(IRepository<DashBoard> repo
-           , IRepository<FieldType> fieldTypeRepo) : base(repo)
+        public DashBoardService(IRepository<DashBoard> repo,
+            IRepository<FieldType> fieldTypeRepo,
+            IRepository<Customer> customerRepo) : base(repo)
         {
             _fieldTypeRepo = fieldTypeRepo;
             _repo = repo;
+            _customerRepo = customerRepo;
 
         }
         public object GetChartsByUserId(string userId)
@@ -41,7 +44,7 @@ namespace Bussines
               .ToList()
               .Select(x => new
               {
-                  Id=x.Id,
+                  Id = x.Id,
                   Name = x.Field.Name,
                   fieldType = _fieldTypeRepo.GetById(x.Field.FieldTypeId).Name,
                   fieldValue = new object[]
@@ -53,6 +56,22 @@ namespace Bussines
 
               });
             return data;
+        }
+
+        public object GetInfo(string Id)
+        {
+            _customerRepo.Context.Configuration.LazyLoadingEnabled = true;
+            var f = 0;
+            var customer = _customerRepo.GetById(Id);
+            customer.Units.ToList().ForEach(x => { f += x.Fields.Count(); });
+            return new
+            {
+                unitCount = customer.Units.Count,
+                fieldCount = f,
+                phone = customer.Phone,
+                users = customer.Users.Count()
+            };
+
         }
     }
 }

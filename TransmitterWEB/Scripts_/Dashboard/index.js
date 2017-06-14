@@ -1,10 +1,14 @@
 ﻿app.controller("dashboardController", ['$scope', '$http', function ($scope, $http) {
     $scope.fields = [];
+    $scope.info = {};
     $http.get('/api/DashBoard/getCharts/')
         .then(function (response) {
             $scope.fields = response.data;
         });
-
+    $http.get('/api/DashBoard/getinfo/')
+        .then(function (response) {
+            $scope.info = response.data;
+        });
     $scope.deleteDashBoard = function (field) {
         var index = $scope.fields.indexOf(field);
         $scope.fields.splice(index, 1);

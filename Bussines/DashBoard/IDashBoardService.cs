@@ -8,5 +8,6 @@ namespace Bussines
     public interface IDashBoardService : IBaseService<DashBoard>
     {
         object GetChartsByUserId(string userId);
+        object GetInfo(string ıd);
     }
 }
