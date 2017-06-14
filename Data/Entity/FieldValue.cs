@@ -7,6 +7,7 @@ namespace Data.Entity
     {
         [ForeignKey("Field")]
         public Guid FieldId { get; set; }
+        
         public  Field Field { get; set; }
         public string Value { get; set; }
 

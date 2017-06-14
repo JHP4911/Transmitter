@@ -18,12 +18,12 @@ namespace TransmitterWEB.WebApi
         }
         public void test()
         {
-            var unit = _service.GetById("3b923e85-e767-480c-82b9-26833a6e178d");
+            var unit = _service.GetById("e4039f01-bc8e-45b5-b95b-19fc6f4b53f8");
             unit.Fields = new List<Field>();
             Field f = new Field();
             f.Name = "deneme";
-            f.UnitId = Guid.Parse("3b923e85-e767-480c-82b9-26833a6e178d");
-            f.FieldTypeId = Guid.Parse("8d3de3e7-93e6-4f16-b2f9-42b806de5daa");
+            f.UnitId = Guid.Parse("e4039f01-bc8e-45b5-b95b-19fc6f4b53f8");
+            f.FieldTypeId = Guid.Parse("0a694846-6d5e-413e-8574-2616d2bedc80");
             f.FieldValue = new List<FieldValue>() { new FieldValue() { Value = "55", CreateTime = DateTime.Now } };
             unit.Fields.Add(f);
             _service.Update(unit);

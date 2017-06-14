@@ -14,6 +14,7 @@ namespace Data.Entity
 
         [ForeignKey("Field")]
         public Guid FieldId { get; set; }
+
         public virtual Field Field { get; set; }
         public Guid UserId { get; set; }
 

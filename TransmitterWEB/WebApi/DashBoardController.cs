@@ -18,6 +18,7 @@ namespace TransmitterWEB.WebApi
         }       
         public HttpResponseMessage getCharts()
         {
+            //TODO userıd yi al
             var Id = "fafb7552-3161-493e-ae77-ffe6b7080344";
             return Request.CreateResponse(HttpStatusCode.OK, _srv.GetChartsByUserId(Id));
         }
