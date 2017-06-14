@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -13,6 +14,8 @@ namespace Bussines
         IQueryable<TEntity> GetAll();
 
         TEntity GetById(string Id);
+
+        TEntity GetById(Guid Id);
 
 
         TEntity Insert(TEntity entity);

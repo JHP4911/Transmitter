@@ -7,5 +7,6 @@ namespace Bussines
 {
     public interface IUnitService : IBaseService<Unit>
     {
+        object GetFieldForCharts(string unitId);
     }
 }
