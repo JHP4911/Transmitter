@@ -40,23 +40,21 @@ namespace Data
         public DbSet<DashBoard> DashBoards { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Field> Fields { get; set; }
-        public DbSet<FieldRegulation> FieldRegulations { get; set; }
         public DbSet<FieldType> FieldTypes { get; set; }
         public DbSet<FieldValue> FieldValues { get; set; }
         public DbSet<Regulation> Regulations { get; set; }
-        public DbSet<SetDataField> SetDataFields { get; set; }
         public DbSet<Unit> Units { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<SetDataField>()
-                        .HasKey(e => e.FieldId);
+            //modelBuilder.Entity<SetDataField>()
+            //            .HasKey(e => e.FieldId);
 
-            // Configure StudentId as FK for StudentAddress
-            modelBuilder.Entity<Field>()
-                        .HasOptional(s => s.SetDataField)
-                        .WithRequired(ad => ad.Field);
+            //// Configure StudentId as FK for StudentAddress
+            //modelBuilder.Entity<Field>()
+            //            .HasOptional(s => s.SetDataField)
+            //            .WithRequired(ad => ad.Field);
         }
     }
 }
