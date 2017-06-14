@@ -263,6 +263,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="WebApi\AccountController.cs" />
     <Compile Include="Controllers\AdminLteController.cs" />
@@ -866,6 +868,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts_\app.js" />
     <Content Include="Scripts_\Dashboard\index.js" />
+    <Content Include="Scripts_\Profile\index.js" />
     <Content Include="Scripts_\Wizard\index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1685,6 +1688,8 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Wizard\Index.cshtml" />
     <Content Include="Views\Unit\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
