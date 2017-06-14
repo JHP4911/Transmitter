@@ -11,12 +11,9 @@ using Newtonsoft.Json;
 namespace Bussines
 {
     public class UnitService : BaseService<Unit>, IUnitService
-    {
-        IRepository<Unit> _repo;
+    {        
         IRepository<FieldType> _fieldTypeRepo;
-        private string key;
-        private List<ChartModel> values;
-
+     
         public UnitService(IRepository<Unit> repo
             , IRepository<FieldType> fieldTypeRepo) : base(repo)
         {
@@ -27,24 +24,40 @@ namespace Bussines
         public object GetFieldForCharts(string unitId)
         {
             //TODO: fieldtype lazyloadingle gelmeli neden gelmiyor çöz
-            object[] c;
+            _repo.Context.Configuration.LazyLoadingEnabled = true;
             var data = _repo.GetById(unitId)
-               .Fields
-               .Select(x => new UnitFieldsCharts()
-               {
-                   Name = x.Name,
-                   fieldType = _fieldTypeRepo.GetById(x.FieldTypeId).Name,
-                   fieldValue = ChartModel.create(new ChartModel()
-                   {
-                       label = x.Name,
-                       data = x.FieldValue
-                                       .OrderBy(d => d.CreateTime)
-                                       .Select(s => ChartValues.create(new ChartValues()
-                                       { CreateTime = s.CreateTime.ToString("dd/mm HH:MM"), Value = s.Value }))
-                                       .Take(10)
-                                       .ToList()
-                   })
-               });
+             .Fields
+             .Select(x => new
+             {
+                 Id=x.Id,
+                 Name = x.Name,
+                 fieldType = _fieldTypeRepo.GetById(x.FieldTypeId).Name,
+                 fieldValue = new object[]
+                 {
+                     new {
+                         label = x.Name,
+                         data = x.FieldValue.ToList().Select(s => new object[] { s.CreateTime.ToString("dd/mm HH:MM"), s.Value }) }
+                 }
+
+             });
+            //object[] c;
+            //var data = _repo.GetById(unitId)
+            //   .Fields
+            //   .Select(x => new UnitFieldsCharts()
+            //   {
+            //       Name = x.Name,
+            //       fieldType = _fieldTypeRepo.GetById(x.FieldTypeId).Name,
+            //       fieldValue = ChartModel.create(new ChartModel()
+            //       {
+            //           label = x.Name,
+            //           data = x.FieldValue
+            //                           .OrderBy(d => d.CreateTime)
+            //                           .Select(s => ChartValues.create(new ChartValues()
+            //                           { CreateTime = s.CreateTime.ToString("dd/mm HH:MM"), Value = s.Value }))
+            //                           .Take(10)
+            //                           .ToList()
+            //       })
+            //   });
             //var data = _repo.GetById(unitId)
             //    .Fields
             //    .Select(x => new UnitFieldsCharts()

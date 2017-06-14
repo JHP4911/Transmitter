@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 namespace Bussines
 {
     public class DashBoardService : BaseService<DashBoard>, IDashBoardService
-    {      
+    {
 
         IRepository<FieldType> _fieldTypeRepo;
 
@@ -26,27 +26,32 @@ namespace Bussines
         {
             _repo.Context.Configuration.LazyLoadingEnabled = true;
             var Id = Guid.Parse(userId);
+            //var data = _repo.GetAll()
+            //    .Where(x => x.UserId == Id)
+            //    .ToList()
+            //    .Select(x => new 
+            //    {
+            //        Name = x.Field.Name,
+            //        fieldType = x.FieldId.ToString(),//x.Field.FieldType.Name,
+            //        fieldValue = x.Field.FieldValue.ToList().Select(s=>new object[] {s.CreateTime.ToString("dd/mm HH:MM"), s.Value })
+
+            //    });
             var data = _repo.GetAll()
-                .Where(x => x.UserId == Id)
-                .Include(x => x.Field)
-                .FirstOrDefault().Field;
-                
-                //.Field
-                //.Select(x => new UnitFieldsCharts()
-                //{
-                //    Name = x.Name,
-                //    fieldType = "",
-                //    fieldValue = ChartModel.create(new ChartModel()
-                //    {
-                //        label = x.Name,
-                //        data = x.FieldValue
-                //                       .OrderBy(d => d.CreateTime)
-                //                       .Select(s => ChartValues.create(new ChartValues()
-                //                       { CreateTime = s.CreateTime.ToString("dd/mm HH:MM"), Value = s.Value }))
-                //                       .Take(10)
-                //                       .ToList()
-                //    })
-                //});
+              .Where(x => x.UserId == Id)
+              .ToList()
+              .Select(x => new
+              {
+                  Id=x.Id,
+                  Name = x.Field.Name,
+                  fieldType = _fieldTypeRepo.GetById(x.Field.FieldTypeId).Name,
+                  fieldValue = new object[]
+                  {
+                     new {
+                         label = x.Field.Name,
+                         data = x.Field.FieldValue.ToList().Select(s => new object[] { s.CreateTime.ToString("dd/mm HH:MM"), s.Value }) }
+                  }
+
+              });
             return data;
         }
     }

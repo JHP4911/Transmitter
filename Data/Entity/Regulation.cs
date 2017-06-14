@@ -11,7 +11,7 @@ namespace Data.Entity
     public class Regulation : Base
     {
         public string Name { get; set; }
-          
+        [JsonIgnore]
         public virtual ICollection<Field> Field { get; set; }
     }
 }

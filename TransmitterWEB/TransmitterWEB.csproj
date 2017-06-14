@@ -865,6 +865,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts_\app.js" />
+    <Content Include="Scripts_\Dashboard\index.js" />
     <Content Include="Scripts_\Wizard\index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
