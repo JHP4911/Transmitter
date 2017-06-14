@@ -37,6 +37,7 @@ namespace Data
         {
             return new ApplicationDbContext();
         }
+        public DbSet<DashBoard> DashBoards { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Field> Fields { get; set; }
         public DbSet<FieldRegulation> FieldRegulations { get; set; }

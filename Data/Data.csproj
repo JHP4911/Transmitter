@@ -96,6 +96,7 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Entity\Base.cs" />
     <Compile Include="Entity\CONDITION_TYPE.cs" />
+    <Compile Include="Entity\DashBoard.cs" />
     <Compile Include="Entity\Field.cs" />
     <Compile Include="Entity\FieldRegulation.cs" />
     <Compile Include="Entity\FieldType.cs" />
@@ -122,6 +123,10 @@
     <Compile Include="Migrations\201706121903253_TransmitterData3.Designer.cs">
       <DependentUpon>201706121903253_TransmitterData3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706141219490_TransmitterData4.cs" />
+    <Compile Include="Migrations\201706141219490_TransmitterData4.Designer.cs">
+      <DependentUpon>201706141219490_TransmitterData4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -141,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706121903253_TransmitterData3.resx">
       <DependentUpon>201706121903253_TransmitterData3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706141219490_TransmitterData4.resx">
+      <DependentUpon>201706141219490_TransmitterData4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

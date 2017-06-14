@@ -39,6 +39,7 @@ namespace TransmitterWEB.App_Start
             container.RegisterType<IUnitService, UnitService>();            
             container.RegisterType<IFieldService, FieldService>();            
             container.RegisterType<IFieldValueService, FieldValueService>();            
+            container.RegisterType<IDashBoardService, DashBoardService>();            
         }
     }
 }
