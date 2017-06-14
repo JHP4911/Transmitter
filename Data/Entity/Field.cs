@@ -16,7 +16,7 @@ namespace Data.Entity
         public string Condition { get; set; }
         public string SetDataFieldValue { get; set; }
         public string DefaultFieldValue { get; set; }
-        public virtual ICollection<Regulation> Regulation { get; set; }
+        public virtual ICollection<RegulationFields> Regulation { get; set; }
 
         [ForeignKey("Unit")]
         public Guid UnitId { get; set; }

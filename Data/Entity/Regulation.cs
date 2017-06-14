@@ -12,6 +12,6 @@ namespace Data.Entity
     {
         public string Name { get; set; }
         [JsonIgnore]
-        public virtual ICollection<Field> Field { get; set; }
+        public virtual ICollection<RegulationFields> Field { get; set; }
     }
 }
