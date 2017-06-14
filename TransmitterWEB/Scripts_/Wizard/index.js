@@ -27,33 +27,31 @@
     $scope.setData = ["Set", "SendSms", "SendNotification"]; 
 
     $scope.unit = {
-        name: "",
-        fields: [{
-            id: 0,
-            name: "",
-            fieldType: "",
-            fieldRegulation: {
-                condition:"",
-                conditionType: "",
-                setDataField: [],
-                defaultFieldValue:""
-            },
+        Name: "",
+        Fields: [{
+            Id: 0,
+            Name: "",
+            FieldType: "",
+            ConditionType: "",
+            Regulation: [],
+            SetDataFieldValue: "",
+            DefaultFieldValue:""
         }]
     };
 
     
    
     $scope.addRow = function () {
-        $scope.unit.fields.push({
-            id: $scope.counter,
-            name: "",
-            fieldType: "",
-            fieldRegulation: {
-                condition: "",
-                conditionType: "",
-                setDataField: [],
-                defaultFieldValue: ""
-            },
+        $scope.unit.Fields.push({
+            Id: $scope.counter,
+            Name: "",
+            FieldType: "",
+            FieldRegulation:[ {
+                Condition: "",
+                CnditionType: "",
+                SetDataFieldValue: [],
+                DefaultFieldValue: ""
+            }],
         });
         $scope.counter++;
     }
@@ -61,11 +59,11 @@
 
     $scope.save = function () {
 
-        for (var i = 0; i < $scope.unit.fields.length; i++) {
-            $scope.unit.fields[i].id = null;
+        for (var i = 0; i < $scope.unit.Fields.length; i++) {
+            $scope.unit.Fields[i].Id = null;
         }
 
-        $http.post("api/Field/Insert")
+        $http.post("api/Field/Insert", $scope.unit)
             .then(function (data) {
                 console.log(data);
             });
@@ -76,15 +74,15 @@
     /*setDataField içindeki Buttons Dizisinin içindeki   buttons'ları seçereken kullanılıyor  */
     $scope.setDataFieldSelection = function setDataFieldsSelection(item,id) {
 
-        var idx = $scope.unit.fields[id].fieldRegulation.setDataField.indexOf(item);
+        var idx = $scope.unit.Fields[id].FieldRegulation[0].SetDataFieldValue.indexOf(item);
         // is currently selected
         if (idx > -1) {
-            $scope.unit.fields[id].fieldRegulation.setDataField.splice(idx, 1);
+            $scope.unit.Fields[id].FieldRegulation[0].SetDataFieldValue.splice(idx, 1);
         }
 
         // is newly selected
         else {
-            $scope.unit.fields[id].fieldRegulation.setDataField.push(item);
+            $scope.unit.Fields[id].FieldRegulation[0].SetDataFieldValue.push(item);
         }
     };
 
