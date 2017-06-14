@@ -1,8 +1,9 @@
-﻿app.controller("myWizard", ['$scope', '$http', '$element', function ($scope, $http, $element) {
+﻿app.controller("myWizard", ['$scope', '$http', '$element', '$location', function ($scope, $http, $element, $location) {
     $scope.tabVal = 1;
     $scope.counter = 1;
+    $scope.myProgressBar = false;
     var index;
-    var myElement= {};
+    var myElement = {};
 
 
     $scope.nextTab = function () {
@@ -35,11 +36,12 @@
     $scope.setData = ["Set", "SendSms", "SendNotification"]; 
 
     $scope.Unit = {
+        CustomerId:"3b923e85-e767-480c-82b9-26833a6e178d",
         Name: "",
         Fields: [{
             Id: 0,
             Name: "",
-            FieldType: "",
+            FieldTypeId: "",
             ConditionType: "",
             Regulation: [],
             SetDataFieldValue: "",
@@ -53,7 +55,7 @@
         $scope.Unit.Fields.push({
             Id: $scope.counter,
             Name: "",
-            FieldType: "",
+            FieldTypeId: "",
             ConditionType: "",
             Regulation: [],
             SetDataFieldValue: "",
@@ -62,8 +64,38 @@
         $scope.counter++;
     }
 
+//ProgressBar 
+    function move() {
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 20);
+        function frame() {
+            if (width >= 100) {
+                width = 1;
+                clearInterval(id);
+            } else {
+                width++;
+                elem.style.width = width + '%';
+            }
+        }
+    }
+
+
+    //Finish
+    function finish() {
+        $scope.exampleWrite = $location.host() + "/api/Data/Set?" + $scope.finishData.Id + "&";
+        $scope.exampleRead = $location.host() + "/api/Data/Read?" + $scope.finishData.Id + "&fieldKey=";
+
+        angular.forEach($scope.finishData.Fields, function (value, key) {
+            $scope.exampleWrite += value.Id + "=30" 
+        });
+        $scope.exampleRead += $scope.finishData.Fields[0].Id
+    }
+
 
     $scope.save = function () {
+        $scope.myProgressBar = true;
+        move();
 
         for (var i = 0; i < $scope.Unit.Fields.length; i++) {
             $scope.Unit.Fields[i].Id = null;
@@ -71,15 +103,18 @@
 
         $http.post("api/unit/Insert", $scope.Unit)
             .then(function (data) {
-                console.log(data);
+                $scope.finishData = data.data;
+                if (data.data.Id != null) {
+                    finish();
+                    $scope.tabVal = 4;
+                }
             });
-        console.log($scope.Unit.fields);
 
     }
 
     function find(array, value) {
         for (var i = 0; i < array.length; i++) {
-            if (array[i].Name == value) {
+            if (array[i].RegulationId == value) {
                 return i
             }
         }
@@ -89,11 +124,10 @@
     /*setDataField içindeki Buttons Dizisinin içindeki   buttons'ları seçereken kullanılıyor  */
     $scope.setDataFieldSelection = function setDataFieldsSelection(item,id) {
         myElement = {
-            Id: item.Id,
-            Name: item.Name,
+            RegulationId: item.Id,
         }
 
-        index = find($scope.Unit.Fields[id].Regulation, myElement.Name);
+        index = find($scope.Unit.Fields[id].Regulation, myElement.RegulationId);
 
         if ($scope.Unit.Fields[id].Regulation == 0) {
             $scope.Unit.Fields[id].Regulation.push(myElement);
