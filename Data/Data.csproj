@@ -101,6 +101,7 @@
     <Compile Include="Entity\FieldType.cs" />
     <Compile Include="Entity\FieldValue.cs" />
     <Compile Include="Entity\Regulation.cs" />
+    <Compile Include="Entity\RegulationFields.cs" />
     <Compile Include="Entity\Unit.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -121,6 +122,14 @@
     <Compile Include="Migrations\201706141544389_TransmitterData3.Designer.cs">
       <DependentUpon>201706141544389_TransmitterData3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706141837060_TransmitterData4.cs" />
+    <Compile Include="Migrations\201706141837060_TransmitterData4.Designer.cs">
+      <DependentUpon>201706141837060_TransmitterData4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706141841264_TransmitterData5.cs" />
+    <Compile Include="Migrations\201706141841264_TransmitterData5.Designer.cs">
+      <DependentUpon>201706141841264_TransmitterData5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -140,6 +149,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706141544389_TransmitterData3.resx">
       <DependentUpon>201706141544389_TransmitterData3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706141837060_TransmitterData4.resx">
+      <DependentUpon>201706141837060_TransmitterData4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706141841264_TransmitterData5.resx">
+      <DependentUpon>201706141841264_TransmitterData5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

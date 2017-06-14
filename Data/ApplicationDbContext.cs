@@ -43,6 +43,7 @@ namespace Data
         public DbSet<FieldType> FieldTypes { get; set; }
         public DbSet<FieldValue> FieldValues { get; set; }
         public DbSet<Regulation> Regulations { get; set; }
+        public DbSet<RegulationFields> RegulationFieldies { get; set; }
         public DbSet<Unit> Units { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
