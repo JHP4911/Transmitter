@@ -2,7 +2,8 @@
     $scope.tabVal = 1;
     $scope.counter = 1;
     var index;
-    var myElement= {};
+    var myElement = {};
+    var myProgressBar = false;
 
 
     $scope.nextTab = function () {
@@ -64,7 +65,26 @@
     }
 
 
+    function move() {
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                elem.style.width = width + '%';
+            }
+        }
+    }
+
+
+
     $scope.save = function () {
+        con
+        myProgressBar = true;
+        move();
 
         for (var i = 0; i < $scope.Unit.Fields.length; i++) {
             $scope.Unit.Fields[i].Id = null;
@@ -73,6 +93,7 @@
         $http.post("api/unit/Insert", $scope.Unit)
             .then(function (data) {
                 console.log(data);
+                $scope.tabVal = 4;
             });
         console.log($scope.Unit.fields);
 
