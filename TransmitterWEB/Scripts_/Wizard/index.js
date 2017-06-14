@@ -1,7 +1,9 @@
 ﻿app.controller("myWizard", ['$scope', '$http', '$element', function ($scope, $http, $element) {
     $scope.tabVal = 1;
     $scope.counter = 1;
-   
+    var index;
+    var myElement= {};
+
 
     $scope.nextTab = function () {
 
@@ -22,11 +24,17 @@
             $scope.fieldType = data.data;
         });
 
+    ///Regulation
+    $http.get("api/Regulation/GetAll")
+        .then(function (data) {
+            $scope.regulation = data.data;
+        });
+
    
     $scope.comparisonType = ["BUYUK", "KUCUK", "ESıt", "FARKLI"];
     $scope.setData = ["Set", "SendSms", "SendNotification"]; 
 
-    $scope.unit = {
+    $scope.Unit = {
         Name: "",
         Fields: [{
             Id: 0,
@@ -35,23 +43,21 @@
             ConditionType: "",
             Regulation: [],
             SetDataFieldValue: "",
-            DefaultFieldValue:""
+            DefaultFieldValue: ""
         }]
     };
 
     
    
     $scope.addRow = function () {
-        $scope.unit.Fields.push({
+        $scope.Unit.Fields.push({
             Id: $scope.counter,
             Name: "",
             FieldType: "",
-            FieldRegulation:[ {
-                Condition: "",
-                CnditionType: "",
-                SetDataFieldValue: [],
-                DefaultFieldValue: ""
-            }],
+            ConditionType: "",
+            Regulation: [],
+            SetDataFieldValue: "",
+            DefaultFieldValue: ""
         });
         $scope.counter++;
     }
@@ -59,30 +65,47 @@
 
     $scope.save = function () {
 
-        for (var i = 0; i < $scope.unit.Fields.length; i++) {
-            $scope.unit.Fields[i].Id = null;
+        for (var i = 0; i < $scope.Unit.Fields.length; i++) {
+            $scope.Unit.Fields[i].Id = null;
         }
 
-        $http.post("api/Field/Insert", $scope.unit)
+        $http.post("api/Field/Insert", $scope.Unit)
             .then(function (data) {
                 console.log(data);
             });
-        console.log($scope.unit.fields);
+        console.log($scope.Unit.fields);
 
+    }
+
+    function find(array, value) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i].Name == value) {
+                return i
+            }
+        }
+        return null;
     }
 
     /*setDataField içindeki Buttons Dizisinin içindeki   buttons'ları seçereken kullanılıyor  */
     $scope.setDataFieldSelection = function setDataFieldsSelection(item,id) {
-
-        var idx = $scope.unit.Fields[id].FieldRegulation[0].SetDataFieldValue.indexOf(item);
-        // is currently selected
-        if (idx > -1) {
-            $scope.unit.Fields[id].FieldRegulation[0].SetDataFieldValue.splice(idx, 1);
+        myElement = {
+            Id: item.Id,
+            Name: item.Name,
         }
 
-        // is newly selected
+        index = find($scope.Unit.Fields[id].Regulation, myElement.Name);
+
+        if ($scope.Unit.Fields[id].Regulation == 0) {
+            $scope.Unit.Fields[id].Regulation.push(myElement);
+        }
         else {
-            $scope.unit.Fields[id].FieldRegulation[0].SetDataFieldValue.push(item);
+
+            if (index==null) {
+                $scope.Unit.Fields[id].Regulation.push(myElement);
+            }
+            else {
+                $scope.Unit.Fields[id].Regulation.splice(index,1);   
+            }
         }
     };
 
@@ -91,7 +114,7 @@
 
 
     /**********************************************************************/
-    $scope.$watch('unit', function (model) {
+    $scope.$watch('Unit', function (model) {
         $scope.modelAsJson = angular.toJson(model, true)
         //console.log("asd");
     }, true);

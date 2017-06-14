@@ -35,7 +35,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" ng-model="unit.Name" placeholder="...">
+                                        <input type="text" class="form-control" ng-model="Unit.Name" placeholder="...">
                                     </td>
                                 </tr>
                             </table>
@@ -51,7 +51,7 @@
                                     <td><label>Field Name</label></td>
                                     <td><label>Field Type</label></td>
                                 </tr>
-                                <tr ng-repeat="item in unit.Fields">
+                                <tr ng-repeat="item in Unit.Fields">
                                     <td>
                                         <input type="text" class="form-control" ng-model="item.Id" placeholder="...">
                                     </td>
@@ -88,7 +88,7 @@
                                     <td><label>Set Field</label></td>
                                     <td><label>Default Value</label></td>
                                 </tr>
-                                <tr ng-repeat="item in unit.Fields">
+                                <tr ng-repeat="item in Unit.Fields">
                                     <td>
                                         <input type="text" ng-model="item.Name" class="form-control" placeholder="...">
                                     </td>
@@ -107,11 +107,11 @@
                                         <button type="button" class="btn btn-default" style="color:#444444;border-color:#E3E3E3" data-toggle="collapse" data-target="#{{item.Id}}">Seçiminiz.........</button>
                                         <div id="{{item.Id}}" class="collapse">
                                             <ul class="set-data-field">
-                                                <li ng-repeat="x in setData">
+                                                <li ng-repeat="x in regulation">
                                                     <input type="checkbox"
-                                                           ng-checked="item.fieldRegulation[0].setDataFieldValue.indexOf(x)>-1"
+                                                           ng-checked="item.FieldRegulation.SetDataFieldValue.indexOf(x)>-1"
                                                            ng-click="setDataFieldSelection(x,item.Id)"
-                                                           value="{{x}}">{{x}}
+                                                           value="{{x.Id}}">{{x.Name}}
                                                 </li>
                                             </ul>
                                         </div>
@@ -178,12 +178,12 @@
         </div> <!-- wizard container -->
     </div>
     <!--Silincek-->
-    <br />
+    @*<br />
             <div class="row">
                  <pre>
                         {{modelAsJson}}
         </pre>
-            </div>
+            </div>*@
     <!--****************************-->
 </div><!-- end row -->
 
