@@ -69,7 +69,7 @@
             $scope.Unit.Fields[i].Id = null;
         }
 
-        $http.post("api/Field/Insert", $scope.Unit)
+        $http.post("api/unit/Insert", $scope.Unit)
             .then(function (data) {
                 console.log(data);
             });

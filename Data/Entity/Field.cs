@@ -20,7 +20,7 @@ namespace Data.Entity
 
         [ForeignKey("Unit")]
         public Guid UnitId { get; set; }
-
+        [JsonIgnore]
         public Unit Unit { get; set; }
 
         [ForeignKey("FieldType")]

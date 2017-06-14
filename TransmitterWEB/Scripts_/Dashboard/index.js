@@ -6,6 +6,14 @@
             console.log($scope.fields[0].fieldValue);
 
         });
+
+    $scope.deleteDashBoard = function (Id) {
+        console.log(Id);
+        $http.post('/api/DashBoard/deleteChart', { Id: Id })
+            .then(function (response) {
+                console.log(response);
+            });
+    }
     $scope.options = {
 
         series: {
