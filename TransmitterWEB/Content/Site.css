@@ -8,7 +8,19 @@
 
 
 /* Sonradan Eklenen Stiller*/
+#myProgress {
+    width: 100%;
+    background-color: #999999;
+    ;
+}
 
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: #FF9500;
+}
+
+//Wizard Ekeranındaki Kurallar sekmesinde
 .set-data-field{
     margin-left:2px;
     padding:0;
