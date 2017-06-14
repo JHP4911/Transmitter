@@ -17,13 +17,20 @@ namespace Bussines
             d.Add(model);
             return d;
         }
-        public string key { get; set; }
-        public List<ChartValues> values { get; set; }
+        public string label { get; set; }
+        public List<List<object>> data { get; set; }
     }
 
     public class ChartValues
     {
         public string Value { get; set; }
-        public long CreateTime { get; set; }
+        public string CreateTime { get; set; }
+        public static List<object> create(ChartValues model)
+        {
+            List<object> d = new List<object>();
+            d.Add(model.CreateTime);
+            d.Add(model.Value);
+            return d;
+        }
     }
 }

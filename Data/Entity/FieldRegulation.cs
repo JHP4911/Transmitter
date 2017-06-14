@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace Data.Entity
         public string SetDataFieldValue { get; set; }
         public string DefaultFieldValue { get; set; }
         public  Regulation Regulation { get; set; }
+        [JsonIgnore]
         public  Field Field { get; set; }
     }
 }

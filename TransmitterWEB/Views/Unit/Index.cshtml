@@ -5,10 +5,7 @@
          new Crumb("Unit1", "", "fa-dashboard")
     });
 }
-<div ng-controller="unitController" ng-init="initController('@ViewBag.Id')">
-    @*<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>*@
-
-    <!-- charts -->
+<div ng-controller="unitController" ng-init="initController('@ViewBag.Id')">   
     <div class="row">
         <!-- Line chart -->
         <div ng-repeat="field in fields"
@@ -19,43 +16,27 @@
                     <h3 class="box-title">{{field.Name}}</h3>
                 </div>
                 <div ng-if="field.fieldType!='Location'" class="box-body">
-                    <nvd3 options='options'  data='field.fieldValue'></nvd3>
+                    <flot dataset="field.fieldValue" options="options" height="300px"></flot>
                 </div>
                 <div ng-if="field.fieldType=='Location'" class="box-body">
-                    <ng-map zoom="11" center="{{field.fieldValue[0].values[0].Value}}">
-                        <marker ng-repeat="p in field.fieldValue[0].values"
-                                position="{{p.Value}}"                              
-                                title="time: {{ticksToDate(p.CreateTime)}}"></marker>
+                    <ng-map zoom="11" center="{{field.fieldValue[0].data[0][1]}}">
+                        <marker ng-repeat="p in field.fieldValue[0].data"
+                                position="{{p[1]}}"
+                                title="time: {{p[0]}}"></marker>
                     </ng-map>
                 </div>
 
             </div>
         </div>
         <!-- /.Line chart -->
+        <!--/charts-->
+
     </div>
-    <!--/charts-->
-   
+
 </div>
-
-
-@*<div class="row">
-    <!-- Line chart -->
-    <div class="col-md-4">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <i class="fa fa-bar-chart-o"></i>
-                <h3 class="box-title">Line Chart</h3>
-            </div>
-            <div class="box-body">
-                <nvd3 options='options' data='data'></nvd3>
-            </div>
-
-        </div>
-    </div>
-    <!-- /.Line chart -->
-</div>*@
-
 @section scripts{
-
+    <script src="~/Scripts/AdminLTE/plugins/flot/jquery.flot.min.js"></script>
+    <script src="~/Scripts/AdminLTE/plugins/flot/jquery.flot.categories.min.js"></script>
+    <script src="~/Scripts/AdminLTE/plugins/flot/jquery.flot.resize.min.js"></script>
     <script src="~/Scripts_/Unit/index.js"></script>
 }
