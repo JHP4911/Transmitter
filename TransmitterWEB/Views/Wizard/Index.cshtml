@@ -56,7 +56,7 @@
                                         <input type="text" class="form-control" ng-model="item.id" placeholder="...">
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" ng-model="item.fieldName" placeholder="...">
+                                        <input type="text" class="form-control" ng-model="item.name" placeholder="...">
                                     </td>
                                     <td>
                                         <select name="country" class="form-control" ng-model="item.fieldType">
@@ -89,27 +89,34 @@
                                 </tr>
                                 <tr ng-repeat="item in unit.fields">
                                     <td>
-                                        <input type="text" ng-model="item.fieldName" class="form-control" placeholder="...">
+                                        <input type="text" ng-model="item.name" class="form-control" placeholder="...">
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" ng-model="item.comparison" placeholder="...">
+                                        <select name="country" class="form-control" ng-model="item.fieldRegulation.conditionType">
+                                            <option value="{{x}}" ng-repeat=" x in comparisonType">
+                                                {{x}}
+                                            </option>
+                                        </select>
+
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" ng-model="item.conditionValue" placeholder="...">
+                                        <input type="text" class="form-control" ng-model="item.fieldRegulation.condition" placeholder="...">
                                     </td>
                                     <td>
-                                        <div class="col-sm-8">
-                                            @*<input type="number" class="form-control" ng-model="" placeholder="...">*@
-                                            {{item.setDataField}}
+                                        <button type="button" class="btn btn-default" style="color:#444444;border-color:#E3E3E3" data-toggle="collapse" data-target="#{{item.id}}">Seçiminiz.........</button>
+                                        <div id="{{item.id}}" class="collapse">
+                                            <ul class="set-data-field">
+                                                <li ng-repeat="x in setData">
+                                                    <input type="checkbox"
+                                                           ng-checked="item.fieldRegulation.setDataField.indexOf(x)>-1"
+                                                           ng-click="setDataFieldSelection(x,item.id)"
+                                                           value="{{x}}">{{x}}
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <button type="button" class="btn btn-xs" ng-click="editDialog.open(item.setDataField)">Edit...</button>
-                                            @*<input type="submit" value="Add" class="btn btn-default" data-toggle="modal" data-target="#myModal" />*@
-                                            @*<button type="button" class="btn btn-sm btn-primary" ng-click="vm.deleteModal(p)">Delete</button>*@
-                                        </div>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" ng-model="item.defaultValue" placeholder="...">
+                                        <input type="text" class="form-control" ng-model="item.fieldRegulation.defaultFieldValue" placeholder="...">
                                     </td>
 
                                 </tr>
@@ -148,8 +155,9 @@
 
                 <div class="wizard-footer height-wizard">
                     <div class="pull-right">
-                        <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' ng-click="nextTab()" value='Next' />
-                        <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
+                        <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' ng-hide="(tabVal===3) || (tabVal==4)" ng-click="nextTab()" value='Next' />
+                        <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' ng-show="tabVal===3" ng-click="save()" value='Save' />
+                        <input type='button' class='btn btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' ng-show="tabVal===4" />
 
                     </div>
 
@@ -165,20 +173,13 @@
 
         </div> <!-- wizard container -->
     </div>
-
-<div class="row">
-    <edit-person-dialog model="editDialog"></edit-person-dialog>
-</div>
-
-   
-
     <!--Silincek-->
     @*<br />
             <div class="row">
                  <pre>
                         {{modelAsJson}}
-        </pre>
-            </div>*@
+        </pre>*@
+            </div>
     <!--****************************-->
 </div><!-- end row -->
 

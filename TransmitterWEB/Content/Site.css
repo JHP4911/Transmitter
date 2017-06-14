@@ -9,43 +9,23 @@
 
 /* Sonradan Eklenen Stiller*/
 
-
-.body-margin {
-    margin-left: 5px;
-    margin-right: 5px;
+.set-data-field{
+    margin-left:2px;
+    padding:0;
+}
+.set-data-field li{
+ list-style-type:none;
+}
+.set-data-field li input{
+    margin-right:2px;
 }
 
-.progressbar {
-    width: 100%;
-    padding-left: 8px;
-}
-
-    .progressbar li {
-        float: left;
-        list-style-type: none;
-        height: 20px;
-        background-color: #3C8DBC;
-        width:24%;
-        text-align: center;
-        margin-right: 2px;
-    }
 
 .active-tab {
     background-color: #FF9500 !important;
 }
 
-.input-radious-max{
-    border-radius:4px !important;
-    max-width:100%;
 
-}
-
-.btn-left{
-    text-align:left;
-}
-.btn-right{
-    text-align:right;
-}
 /*.{}
 border-radius:4px !important;max-width:100%*/
 /**************************************************************************/
