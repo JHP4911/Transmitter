@@ -1,10 +1,6 @@
 ﻿app.controller("myWizard", ['$scope', '$http', '$element', function ($scope, $http, $element) {
-
-     
-    ///
-
     $scope.tabVal = 1;
-    $scope.counter = 2;
+    $scope.counter = 1;
    
 
     $scope.nextTab = function () {
@@ -12,7 +8,6 @@
         if ($scope.tabVal < 4) {
             $scope.tabVal++;
         }
-
     }
 
     $scope.prevTab = function () {
@@ -20,7 +15,6 @@
             $scope.tabVal--;
         }
     }
-
 
     //Field
     $http.get("api/Field/getFieldType")
@@ -49,17 +43,35 @@
 
     
    
-
     $scope.addRow = function () {
         $scope.unit.fields.push({
             id: $scope.counter,
-            fieldName: "",
-            fieldType: ""
+            name: "",
+            fieldType: "",
+            fieldRegulation: {
+                condition: "",
+                conditionType: "",
+                setDataField: [],
+                defaultFieldValue: ""
+            },
         });
         $scope.counter++;
     }
 
 
+    $scope.save = function () {
+
+        for (var i = 0; i < $scope.unit.fields.length; i++) {
+            $scope.unit.fields[i].id = null;
+        }
+
+        $http.post("api/Field/Insert")
+            .then(function (data) {
+                console.log(data);
+            });
+        console.log($scope.unit.fields);
+
+    }
 
     /*setDataField içindeki Buttons Dizisinin içindeki   buttons'ları seçereken kullanılıyor  */
     $scope.setDataFieldSelection = function setDataFieldsSelection(item,id) {

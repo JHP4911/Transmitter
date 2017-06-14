@@ -5,7 +5,7 @@ app.controller("navigationCtrl", ['$scope', '$http', function ($scope, $http) {
     $scope.units = [];
     $http.get('/api/Customer/GetCustomerForNavigation/')
         .then(function (response) {
-        console.log(response.data);
+        //console.log(response.data);
         $scope.units = response.data;
     });
 }]);
