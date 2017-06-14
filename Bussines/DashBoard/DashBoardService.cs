@@ -11,8 +11,7 @@ using Newtonsoft.Json;
 namespace Bussines
 {
     public class DashBoardService : BaseService<DashBoard>, IDashBoardService
-    {
-        IRepository<DashBoard> _repo;
+    {      
 
         IRepository<FieldType> _fieldTypeRepo;
 
@@ -25,23 +24,29 @@ namespace Bussines
         }
         public object GetChartsByUserId(string userId)
         {
-            var data = _repo.GetById(userId)
-               .Field
-               .Select(x => new UnitFieldsCharts()
-               {
-                   Name = x.Name,
-                   fieldType = x.FieldType.Name,
-                   fieldValue = ChartModel.create(new ChartModel()
-                   {
-                       label = x.Name,
-                       data = x.FieldValue
-                                       .OrderBy(d => d.CreateTime)
-                                       .Select(s => ChartValues.create(new ChartValues()
-                                       { CreateTime = s.CreateTime.ToString("dd/mm HH:MM"), Value = s.Value }))
-                                       .Take(10)
-                                       .ToList()
-                   })
-               });
+            _repo.Context.Configuration.LazyLoadingEnabled = true;
+            var Id = Guid.Parse(userId);
+            var data = _repo.GetAll()
+                .Where(x => x.UserId == Id)
+                .Include(x => x.Field)
+                .FirstOrDefault().Field;
+                
+                //.Field
+                //.Select(x => new UnitFieldsCharts()
+                //{
+                //    Name = x.Name,
+                //    fieldType = "",
+                //    fieldValue = ChartModel.create(new ChartModel()
+                //    {
+                //        label = x.Name,
+                //        data = x.FieldValue
+                //                       .OrderBy(d => d.CreateTime)
+                //                       .Select(s => ChartValues.create(new ChartValues()
+                //                       { CreateTime = s.CreateTime.ToString("dd/mm HH:MM"), Value = s.Value }))
+                //                       .Take(10)
+                //                       .ToList()
+                //    })
+                //});
             return data;
         }
     }

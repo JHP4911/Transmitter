@@ -271,6 +271,7 @@
     <Compile Include="Controllers\WizardController.cs" />
     <Compile Include="WebApi\BaseApiController.cs" />
     <Compile Include="WebApi\DashBoardController.cs" />
+    <Compile Include="WebApi\RegulationController.cs" />
     <Compile Include="WebApi\UnitController.cs" />
     <Compile Include="WebApi\_baseApiController.cs" />
     <Compile Include="WebApi\DataController.cs" />

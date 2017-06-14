@@ -33,23 +33,21 @@ namespace Bussines
         private void checkFieldRegulation(Field field, FieldValue item)
         {
 
-            foreach (var rule in field.FieldRegulation)
-            {
-                //switch (rule.ConditionType)
-                //{
-                //case CONDITION_TYPE.BUYUK:
-                //    if(item.Value>rule.Condition)
-                //    break;
-                //case CONDITION_TYPE.KUCUK:
-                //    break;
-                //case CONDITION_TYPE.ESIT:
-                //    break;
-                //case CONDITION_TYPE.FARKLI:
-                //    break;
-                //default:
-                //    break;
-                // }
-            }
+            //switch (rule.ConditionType)
+            //{
+            //case CONDITION_TYPE.BUYUK:
+            //    if(item.Value>rule.Condition)
+            //    break;
+            //case CONDITION_TYPE.KUCUK:
+            //    break;
+            //case CONDITION_TYPE.ESIT:
+            //    break;
+            //case CONDITION_TYPE.FARKLI:
+            //    break;
+            //default:
+            //    break;
+            // }
+
         }
     }
 }

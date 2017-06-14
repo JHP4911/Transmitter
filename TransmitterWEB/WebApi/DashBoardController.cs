@@ -16,8 +16,9 @@ namespace TransmitterWEB.WebApi
         {
             _srv = service;
         }       
-        public HttpResponseMessage getUnitFieldforCharts(string Id)
+        public HttpResponseMessage getCharts()
         {
+            var Id = "fafb7552-3161-493e-ae77-ffe6b7080344";
             return Request.CreateResponse(HttpStatusCode.OK, _srv.GetChartsByUserId(Id));
         }
 

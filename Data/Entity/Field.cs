@@ -12,6 +12,12 @@ namespace Data.Entity
     public class Field : Base
     {
         public string Name { get; set; }
+        public CONDITION_TYPE ConditionType { get; set; }
+        public string Condition { get; set; }
+        public string SetDataFieldValue { get; set; }
+        public string DefaultFieldValue { get; set; }
+        public virtual ICollection<Regulation> Regulation { get; set; }
+
         [ForeignKey("Unit")]
         public Guid UnitId { get; set; }
 
@@ -20,10 +26,11 @@ namespace Data.Entity
         [ForeignKey("FieldType")]
         public Guid FieldTypeId { get; set; }
         public FieldType FieldType { get; set; }
+
         [JsonIgnore]
         public virtual ICollection<FieldValue> FieldValue { get; set; }
-        public virtual ICollection<FieldRegulation> FieldRegulation { get; set; }
-        public virtual SetDataField SetDataField { get; set; }
+
+       
 
     }
 }

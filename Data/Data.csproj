@@ -98,34 +98,24 @@
     <Compile Include="Entity\CONDITION_TYPE.cs" />
     <Compile Include="Entity\DashBoard.cs" />
     <Compile Include="Entity\Field.cs" />
-    <Compile Include="Entity\FieldRegulation.cs" />
     <Compile Include="Entity\FieldType.cs" />
     <Compile Include="Entity\FieldValue.cs" />
     <Compile Include="Entity\Regulation.cs" />
-    <Compile Include="Entity\SetDataField.cs" />
     <Compile Include="Entity\Unit.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="FieldValueModel.cs" />
-    <Compile Include="Migrations\201706102019306_TransmitterData.cs" />
-    <Compile Include="Migrations\201706102019306_TransmitterData.Designer.cs">
-      <DependentUpon>201706102019306_TransmitterData.cs</DependentUpon>
+    <Compile Include="Migrations\201706141327001_TransmitterData.cs" />
+    <Compile Include="Migrations\201706141327001_TransmitterData.Designer.cs">
+      <DependentUpon>201706141327001_TransmitterData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706102105060_TransmitterData1.cs" />
-    <Compile Include="Migrations\201706102105060_TransmitterData1.Designer.cs">
-      <DependentUpon>201706102105060_TransmitterData1.cs</DependentUpon>
+    <Compile Include="Migrations\201706141333438_TransmitterData1.cs" />
+    <Compile Include="Migrations\201706141333438_TransmitterData1.Designer.cs">
+      <DependentUpon>201706141333438_TransmitterData1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706111339253_TransmitterData2.cs" />
-    <Compile Include="Migrations\201706111339253_TransmitterData2.Designer.cs">
-      <DependentUpon>201706111339253_TransmitterData2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706121903253_TransmitterData3.cs" />
-    <Compile Include="Migrations\201706121903253_TransmitterData3.Designer.cs">
-      <DependentUpon>201706121903253_TransmitterData3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706141219490_TransmitterData4.cs" />
-    <Compile Include="Migrations\201706141219490_TransmitterData4.Designer.cs">
-      <DependentUpon>201706141219490_TransmitterData4.cs</DependentUpon>
+    <Compile Include="Migrations\201706141339072_TransmitterData2.cs" />
+    <Compile Include="Migrations\201706141339072_TransmitterData2.Designer.cs">
+      <DependentUpon>201706141339072_TransmitterData2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,20 +125,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706102019306_TransmitterData.resx">
-      <DependentUpon>201706102019306_TransmitterData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706141327001_TransmitterData.resx">
+      <DependentUpon>201706141327001_TransmitterData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706102105060_TransmitterData1.resx">
-      <DependentUpon>201706102105060_TransmitterData1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706141333438_TransmitterData1.resx">
+      <DependentUpon>201706141333438_TransmitterData1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706111339253_TransmitterData2.resx">
-      <DependentUpon>201706111339253_TransmitterData2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706121903253_TransmitterData3.resx">
-      <DependentUpon>201706121903253_TransmitterData3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706141219490_TransmitterData4.resx">
-      <DependentUpon>201706141219490_TransmitterData4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706141339072_TransmitterData2.resx">
+      <DependentUpon>201706141339072_TransmitterData2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
