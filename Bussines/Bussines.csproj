@@ -64,7 +64,9 @@
     <Compile Include="Base\BaseService.cs" />
     <Compile Include="FieldValue\FieldValueService.cs" />
     <Compile Include="FieldValue\IFieldValueService.cs" />
-    <Compile Include="Unit\ChartValueModel.cs" />
+    <Compile Include="_Model\ChartValueModel.cs" />
+    <Compile Include="DashBoard\IDashBoardService.cs" />
+    <Compile Include="DashBoard\DashBoardService.cs" />
     <Compile Include="Unit\UnitService.cs" />
     <Compile Include="Unit\IUnitService.cs" />
     <Compile Include="Customer\CustomerService.cs" />

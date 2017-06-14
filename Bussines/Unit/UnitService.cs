@@ -26,24 +26,42 @@ namespace Bussines
         }
         public object GetFieldForCharts(string unitId)
         {
-         //TODO: fieldtype lazyloadingle gelmeli neden gelmiyor çöz
+            //TODO: fieldtype lazyloadingle gelmeli neden gelmiyor çöz
+            object[] c;
             var data = _repo.GetById(unitId)
-                .Fields
-                .Select(x => new UnitFieldsCharts()
-                {
-                    Name = x.Name,
-                    fieldType = _fieldTypeRepo.GetById(x.FieldTypeId).Name,
-                    fieldValue = ChartModel.create(new ChartModel()
-                    {
-                        key = x.Name,
-                        values = x.FieldValue
-                            .Select(s => new ChartValues()
-                            { CreateTime = dateToLong(s.CreateTime), Value = s.Value })
-                            .OrderByDescending(d => d.CreateTime)
-                            .Take(10)
-                            .ToList()
-                    })
-                });
+               .Fields
+               .Select(x => new UnitFieldsCharts()
+               {
+                   Name = x.Name,
+                   fieldType = _fieldTypeRepo.GetById(x.FieldTypeId).Name,
+                   fieldValue = ChartModel.create(new ChartModel()
+                   {
+                       label = x.Name,
+                       data = x.FieldValue
+                                       .OrderBy(d => d.CreateTime)
+                                       .Select(s => ChartValues.create(new ChartValues()
+                                       { CreateTime = s.CreateTime.ToString("dd/mm HH:MM"), Value = s.Value }))
+                                       .Take(10)
+                                       .ToList()
+                   })
+               });
+            //var data = _repo.GetById(unitId)
+            //    .Fields
+            //    .Select(x => new UnitFieldsCharts()
+            //    {
+            //        Name = x.Name,
+            //        fieldType = _fieldTypeRepo.GetById(x.FieldTypeId).Name,
+            //        fieldValue = ChartModel.create(new ChartModel()
+            //        {
+            //            key = x.Name,
+            //            values = x.FieldValue
+            //                .Select(s => new ChartValues()
+            //                { CreateTime = dateToLong(s.CreateTime), Value = s.Value, index = c++ })
+            //                .OrderByDescending(d => d.CreateTime)
+            //                .Take(10)
+            //                .ToList()
+            //        })
+            //    });
             return data;
         }
         private long dateToLong(DateTime now)

@@ -22,7 +22,6 @@ namespace Data.Entity
         public FieldType FieldType { get; set; }
         [JsonIgnore]
         public virtual ICollection<FieldValue> FieldValue { get; set; }
-        [JsonIgnore]
         public virtual ICollection<FieldRegulation> FieldRegulation { get; set; }
         public virtual SetDataField SetDataField { get; set; }
 

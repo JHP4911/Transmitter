@@ -1,4 +1,4 @@
-﻿var app = angular.module("myApp", ['nvd3', 'ngMaterial', 'ngMap']);
+﻿var app = angular.module("myApp", ['angular-flot', 'ngMap']);
 app.controller("navigationCtrl", ['$scope', '$http', function ($scope, $http) {
     $scope.tabVal = 1;
     $scope.counter = 2;
