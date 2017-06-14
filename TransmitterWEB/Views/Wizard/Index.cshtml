@@ -59,7 +59,7 @@
                                         <input type="text" class="form-control" ng-model="item.Name" placeholder="...">
                                     </td>
                                     <td>
-                                        <select name="country" class="form-control" ng-model="item.FieldType">
+                                        <select name="country" class="form-control" ng-model="item.FieldTypeId">
                                             <option value="{{x.Id}}" ng-repeat=" x in fieldType">
                                                 {{x.Name}}
                                             </option>
@@ -178,12 +178,12 @@
         </div> <!-- wizard container -->
     </div>
     <!--Silincek-->
-    @*<br />
+    <br />
             <div class="row">
                  <pre>
                         {{modelAsJson}}
         </pre>
-            </div>*@
+            </div>
     <!--****************************-->
 </div><!-- end row -->
 

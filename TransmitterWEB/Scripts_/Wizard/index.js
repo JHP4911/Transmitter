@@ -35,11 +35,12 @@
     $scope.setData = ["Set", "SendSms", "SendNotification"]; 
 
     $scope.Unit = {
+        CustomerId:"3b923e85-e767-480c-82b9-26833a6e178d",
         Name: "",
         Fields: [{
             Id: 0,
             Name: "",
-            FieldType: "",
+            FieldTypeId: "",
             ConditionType: "",
             Regulation: [],
             SetDataFieldValue: "",
@@ -53,7 +54,7 @@
         $scope.Unit.Fields.push({
             Id: $scope.counter,
             Name: "",
-            FieldType: "",
+            FieldTypeId: "",
             ConditionType: "",
             Regulation: [],
             SetDataFieldValue: "",
@@ -69,7 +70,7 @@
             $scope.Unit.Fields[i].Id = null;
         }
 
-        $http.post("api/Field/Insert", $scope.Unit)
+        $http.post("api/unit/Insert", $scope.Unit)
             .then(function (data) {
                 console.log(data);
             });
