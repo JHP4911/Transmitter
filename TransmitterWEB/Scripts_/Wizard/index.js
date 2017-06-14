@@ -1,7 +1,11 @@
-﻿app.controller("myWizard",['$scope','$http', function ($scope,$http) {
+﻿app.controller("myWizard", ['$scope', '$http', '$element', function ($scope, $http, $element) {
+
+     
+    ///
+
     $scope.tabVal = 1;
     $scope.counter = 2;
-    $scope.showHideVal = false;
+   
 
     $scope.nextTab = function () {
 
@@ -17,12 +21,6 @@
         }
     }
 
-    $scope.showHide = function () {
-        
-        $scope.showHideVal = !$scope.showHideVal;
-    }
-
-
 
     //Field
     $http.get("api/Field/getFieldType")
@@ -31,23 +29,22 @@
         });
 
    
-$comparisonType=["<","<=",">",">=",""]
-    
+    $scope.comparisonType = ["BUYUK", "KUCUK", "ESıt", "FARKLI"];
+    $scope.setData = ["Set", "SendSms", "SendNotification"]; 
 
     $scope.unit = {
-
         name: "",
-        
         fields: [{
-            id: 1,
-            fieldName: "",
+            id: 0,
+            name: "",
             fieldType: "",
-            conditionType: "",
-            conditionValue:0,
-            fieldRegulation: "",
-            setDataField: [],
-            defaultValue:0,
-        }],
+            fieldRegulation: {
+                condition:"",
+                conditionType: "",
+                setDataField: [],
+                defaultFieldValue:""
+            },
+        }]
     };
 
     
@@ -61,6 +58,27 @@ $comparisonType=["<","<=",">",">=",""]
         });
         $scope.counter++;
     }
+
+
+
+    /*setDataField içindeki Buttons Dizisinin içindeki   buttons'ları seçereken kullanılıyor  */
+    $scope.setDataFieldSelection = function setDataFieldsSelection(item,id) {
+
+        var idx = $scope.unit.fields[id].fieldRegulation.setDataField.indexOf(item);
+        // is currently selected
+        if (idx > -1) {
+            $scope.unit.fields[id].fieldRegulation.setDataField.splice(idx, 1);
+        }
+
+        // is newly selected
+        else {
+            $scope.unit.fields[id].fieldRegulation.setDataField.push(item);
+        }
+    };
+
+
+
+
 
     /**********************************************************************/
     $scope.$watch('unit', function (model) {
