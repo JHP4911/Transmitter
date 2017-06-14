@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Data.Entity
 {
@@ -9,6 +10,7 @@ namespace Data.Entity
         public string Email { get; set; }
 
         public virtual ICollection<Unit> Units { get; set; }
+        [JsonIgnore]
         public virtual ICollection<ApplicationUser> Users { get; set; }       
 
     }

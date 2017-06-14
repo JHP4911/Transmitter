@@ -13,6 +13,7 @@ namespace TransmitterWEB.WebApi
 {
     public class DataController : _baseApiController
     {
+        
         IFieldValueService _service;
         public DataController(IFieldValueService service)
         {
@@ -26,24 +27,32 @@ namespace TransmitterWEB.WebApi
             List<FieldValue> values = new List<FieldValue>();
             FieldValue item;
             DateTime dt = DateTime.Now;
-            foreach (var key in HttpContext.Current.Request.QueryString.AllKeys.Where(x=>!x.Contains("appKey")))
+            foreach (var key in HttpContext.Current.Request.QueryString.AllKeys.Where(x => !x.Contains("appKey")))
             {
                 value = HttpContext.Current.Request.QueryString.GetValues(key).FirstOrDefault();
                 if (string.IsNullOrEmpty(value))
                     continue;
-                item = new FieldValue() {
-                    FieldId=Guid.Parse(key),
-                    Value=value,
-                    CreateTime=dt
+                item = new FieldValue()
+                {
+                    FieldId = Guid.Parse(key),
+                    Value = value,
+                    CreateTime = dt
                 };
                 values.Add(item);
             }
-            _service.InsertValue(appKey,values);
+            _service.InsertValue(appKey, values);
         }
         [HttpPost]
         public void SetPost([FromBody]FieldValueMainModel data)
         {
 
+        }
+        [HttpGet]
+        public object Read()
+        {
+            var appKey = Guid.Parse(HttpContext.Current.Request.QueryString.GetValues("appKey").FirstOrDefault());
+            var fieldKey = Guid.Parse(HttpContext.Current.Request.QueryString.GetValues("fieldKey").FirstOrDefault());
+            return _service.GetAll().Where(x => x.FieldId == fieldKey && x.Field.UnitId == appKey).FirstOrDefault().Field.CheckValue;
         }
     }
 }

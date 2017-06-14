@@ -130,6 +130,10 @@
     <Compile Include="Migrations\201706141841264_TransmitterData5.Designer.cs">
       <DependentUpon>201706141841264_TransmitterData5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706142004323_TrasmitterData.cs" />
+    <Compile Include="Migrations\201706142004323_TrasmitterData.Designer.cs">
+      <DependentUpon>201706142004323_TrasmitterData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706141841264_TransmitterData5.resx">
       <DependentUpon>201706141841264_TransmitterData5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706142004323_TrasmitterData.resx">
+      <DependentUpon>201706142004323_TrasmitterData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -28,5 +28,12 @@ namespace TransmitterWEB.WebApi
                 return Request.CreateResponse(HttpStatusCode.OK, _srv.getCustomerForNavigation(custId));
             return null;
         }
+        public HttpResponseMessage GetCustemer()
+        {
+
+            var custId = "3b923e85-e767-480c-82b9-26833a6e178d";// User.Identity.GetCustomerId();
+            var d = _srv.GetById(custId);
+            return Request.CreateResponse(HttpStatusCode.OK, new { d.Id, d.Name, d.Phone, d.Email });
+        }
     }
 }

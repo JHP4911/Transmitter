@@ -1,10 +1,11 @@
 ﻿app.controller("unitController", ['$scope', '$http', function ($scope, $http) {
     $scope.fields = [];
+
     $scope.sendDashBoard = function (Id) {
         console.log(Id);
         $http.post('/api/DashBoard/addChart', { fieldId: Id })
             .then(function (response) {
-               
+
                 console.log(response);
 
             });
@@ -19,7 +20,6 @@
             });
     }
     $scope.options = {
-
         series: {
             color: "#3c8dbc",
             lines: { show: true },
@@ -36,8 +36,5 @@
             tickLength: 0
         }
     };
-
-
-
 
 }]);

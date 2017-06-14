@@ -3,13 +3,12 @@
     $http.get('/api/DashBoard/getCharts/')
         .then(function (response) {
             $scope.fields = response.data;
-            console.log($scope.fields[0].fieldValue);
-
         });
 
-    $scope.deleteDashBoard = function (Id) {
-        console.log(Id);
-        $http.post('/api/DashBoard/deleteChart', { Id: Id })
+    $scope.deleteDashBoard = function (field) {
+        var index = $scope.fields.indexOf(field);
+        $scope.fields.splice(index, 1);
+        $http.post('/api/DashBoard/deleteChart', { Id: field.Id })
             .then(function (response) {
                 console.log(response);
             });

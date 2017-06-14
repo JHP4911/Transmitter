@@ -14,7 +14,7 @@ namespace Data.Entity
         public string Name { get; set; }
         public CONDITION_TYPE ConditionType { get; set; }
         public string Condition { get; set; }
-        public string SetDataFieldValue { get; set; }
+        public string CheckValue { get; set; }
         public string DefaultFieldValue { get; set; }
         public virtual ICollection<RegulationFields> Regulation { get; set; }
 
