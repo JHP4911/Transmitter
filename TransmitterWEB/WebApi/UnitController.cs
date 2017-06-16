@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Bussines;
+using Data.Extensions;
 
 namespace TransmitterWEB.WebApi
 {
@@ -18,6 +19,7 @@ namespace TransmitterWEB.WebApi
         }
         public void test()
         {
+            //TODO silinecek
             var unit = _service.GetById("e4039f01-bc8e-45b5-b95b-19fc6f4b53f8");
             unit.Fields = new List<Field>();
             Field f = new Field();
@@ -33,5 +35,10 @@ namespace TransmitterWEB.WebApi
             return Request.CreateResponse(HttpStatusCode.OK, _srv.GetFieldForCharts(Id));
         }
 
+        public override Unit Insert(Unit model)
+        {
+            model.CustomerId =Guid.Parse(User.Identity.GetCustomerId());
+            return base.Insert(model);
+        }
     }
 }

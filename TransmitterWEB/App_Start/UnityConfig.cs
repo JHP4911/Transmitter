@@ -2,6 +2,8 @@ using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Bussines;
+using TransmitterWEB.Controllers;
+using TransmitterWEB.Helpers;
 
 namespace TransmitterWEB.App_Start
 {
@@ -39,8 +41,13 @@ namespace TransmitterWEB.App_Start
             container.RegisterType<IUnitService, UnitService>();            
             container.RegisterType<IFieldService, FieldService>();            
             container.RegisterType<IFieldValueService, FieldValueService>();            
-            container.RegisterType<IDashBoardService, DashBoardService>();            
-            container.RegisterType<IRegulationService, RegulationService>();            
+            container.RegisterType<IDashBoardService, DashBoardService>();
+            container.RegisterType<IWebHelper, WebHelper>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            //container.RegisterType<RolesAdminController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
+            //container.RegisterType<UsersAdminController>(new InjectionConstructor());
+
         }
     }
 }

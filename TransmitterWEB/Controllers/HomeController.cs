@@ -11,7 +11,7 @@ namespace TransmitterWEB.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "DashBoard";
-
+            var a = User.Identity.Name;
             return View();
         }
     }
