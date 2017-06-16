@@ -18,7 +18,7 @@ using TransmitterWEB.Providers;
 using TransmitterWEB.Results;
 using Data;
 
-namespace TransmitterWEB.Controllers
+namespace TransmitterWEB.WebApi
 {
     [Authorize]
     [RoutePrefix("api/Account")]

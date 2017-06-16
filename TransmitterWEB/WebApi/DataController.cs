@@ -11,6 +11,7 @@ using System.Web;
 
 namespace TransmitterWEB.WebApi
 {
+    [AllowAnonymous]
     public class DataController : _baseApiController
     {
         

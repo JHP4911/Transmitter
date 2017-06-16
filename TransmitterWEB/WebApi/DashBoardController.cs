@@ -6,6 +6,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Bussines;
+using Data.Extensions;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace TransmitterWEB.WebApi
 {
@@ -18,24 +21,20 @@ namespace TransmitterWEB.WebApi
         }
         public HttpResponseMessage getInfo()
         {
-            //TODO customerId yi al
-            var Id = "3B923E85-E767-480C-82B9-26833A6E178D";            
+            var Id = User.Identity.GetCustomerId();
             return Request.CreateResponse(HttpStatusCode.OK, _srv.GetInfo(Id));
         }
         public HttpResponseMessage getCharts()
         {
-            //TODO userıd yi al
-            var Id = "fafb7552-3161-493e-ae77-ffe6b7080344";
+            var Id = User.Identity.GetUserId();
             return Request.CreateResponse(HttpStatusCode.OK, _srv.GetChartsByUserId(Id));
         }
 
         public HttpResponseMessage addChart(DashBoard model)
         {
-            //TODO userıd yi al
             DashBoard result = null;
-            var uId = Guid.Parse("fafb7552-3161-493e-ae77-ffe6b7080344");
-            model.UserId = uId;
-            var check = _srv.GetAll().Where(x => x.UserId == uId && model.FieldId == x.FieldId).Count();
+            model.UserId = Guid.Parse(User.Identity.GetUserId());
+            var check = _srv.GetAll().Where(x => x.UserId == model.UserId && model.FieldId == x.FieldId).Count();
             if (check == 0)
                 result = base.Insert(model);
             return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -43,7 +42,6 @@ namespace TransmitterWEB.WebApi
         [HttpPost]
         public HttpResponseMessage deleteChart(DashBoard model)
         {
-            //TODO userıd yi al
             DashBoard result = _srv.GetById(model.Id.ToString());
             if (result != null)
                 _srv.Delete(result);

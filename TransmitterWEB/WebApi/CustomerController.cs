@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 using Data;
 using System.Net.Http;
 using System.Net;
+using Data.Extensions;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace TransmitterWEB.WebApi
 {
@@ -14,8 +17,7 @@ namespace TransmitterWEB.WebApi
     {
         ICustomerService _srv;
 
-        public CustomerController(ICustomerService service
-            ) : base(service)
+        public CustomerController(ICustomerService service) : base(service)
         {
             _srv = service;
 
@@ -23,7 +25,8 @@ namespace TransmitterWEB.WebApi
         public HttpResponseMessage GetCustomerForNavigation()
         {
 
-            var custId = "3b923e85-e767-480c-82b9-26833a6e178d";// User.Identity.GetCustomerId();
+
+            var custId = User.Identity.GetCustomerId();
             if (!string.IsNullOrEmpty(custId))
                 return Request.CreateResponse(HttpStatusCode.OK, _srv.getCustomerForNavigation(custId));
             return null;
@@ -31,7 +34,7 @@ namespace TransmitterWEB.WebApi
         public HttpResponseMessage GetCustemer()
         {
 
-            var custId = "3b923e85-e767-480c-82b9-26833a6e178d";// User.Identity.GetCustomerId();
+            var custId = User.Identity.GetCustomerId();
             var d = _srv.GetById(custId);
             return Request.CreateResponse(HttpStatusCode.OK, new { d.Id, d.Name, d.Phone, d.Email });
         }

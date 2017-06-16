@@ -15,5 +15,6 @@ namespace TransmitterWEB.Controllers
             ViewBag.Id = id;
             return View();
         }
+        
     }
 }

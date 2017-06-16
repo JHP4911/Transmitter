@@ -41,7 +41,7 @@ namespace Bussines
             //    });
             var data = _repo.GetAll()
               .Where(x => x.UserId == Id)
-              .ToList()
+              .ToList()              
               .Select(x => new
               {
                   Id = x.Id,
@@ -51,15 +51,23 @@ namespace Bussines
                   {
                      new {
                          label = x.Field.Name,
-                         data = x.Field.FieldValue.ToList().Select(s => new object[] { s.CreateTime.ToString("dd/mm HH:MM"), s.Value }) }
+                         data = x.Field.FieldValue.ToList()
+                         .OrderByDescending(o=>o.CreateTime)
+                         .Take(10)
+                         .OrderBy(o=>o.CreateTime)
+                         .Select(s => new object[] {
+                             s.CreateTime.ToString(),
+                             s.Value
+                         }) }
                   }
 
-              });
+              }).ToList();
             return data;
         }
 
         public object GetInfo(string Id)
         {
+
             _customerRepo.Context.Configuration.LazyLoadingEnabled = true;
             var f = 0;
             var customer = _customerRepo.GetById(Id);

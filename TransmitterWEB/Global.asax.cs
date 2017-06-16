@@ -17,11 +17,11 @@ namespace TransmitterWEB
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            MvcHandler.DisableMvcResponseHeader = true;
+            //MvcHandler.DisableMvcResponseHeader = true;
 
         }      
 

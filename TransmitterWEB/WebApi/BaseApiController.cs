@@ -8,11 +8,15 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using Data.Entity;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace TransmitterWEB.WebApi
 {
     public class BaseGenerikApiController<T> : _baseApiController
     {
+
+
         public IBaseService<T> _service;
         
         public BaseGenerikApiController(IBaseService<T> service)
@@ -31,7 +35,7 @@ namespace TransmitterWEB.WebApi
         }
 
 
-        public T Insert(T entity)
+        public virtual T Insert(T entity)
         {
             return _service.Insert(entity);
         }
@@ -45,5 +49,13 @@ namespace TransmitterWEB.WebApi
         {
             _service.Delete(entity);
         }
+
+        #region User
+        //private ApplicationUserManager UserManager
+        //{
+        //    get { return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+        //}
+       
+        #endregion
     }
 }
