@@ -1,6 +1,7 @@
 ﻿app.controller("myWizard", ['$scope', '$http', '$element', '$location', function ($scope, $http, $element, $location) {
     $scope.tabVal = 1;
     $scope.counter = 1;
+    $scope.regulationCount = 0;
     $scope.myProgressBar = false;
     var index;
     var myElement = {};
@@ -32,7 +33,7 @@
         });
 
    
-    $scope.comparisonType = ["BUYUK", "KUCUK", "ESıt", "FARKLI"];
+    $scope.conditionType = ["BUYUK", "KUCUK", "ESıt", "FARKLI"];
     $scope.setData = ["Set", "SendSms", "SendNotification"]; 
 
     $scope.Unit = {
@@ -92,7 +93,6 @@
         $scope.exampleRead += $scope.finishData.Fields[0].Id
     }
 
-
     $scope.save = function () {
         $scope.myProgressBar = true;
         move();
@@ -109,7 +109,6 @@
                     $scope.tabVal = 4;
                 }
             });
-
     }
 
     function find(array, value) {
@@ -141,6 +140,7 @@
                 $scope.Unit.Fields[id].Regulation.splice(index,1);   
             }
         }
+        $scope.regulationCount = $scope.Unit.Fields[id].Regulation.length;
     };
 
 

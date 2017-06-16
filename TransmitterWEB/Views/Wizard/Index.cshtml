@@ -96,7 +96,7 @@
                                     </td>
                                     <td>
                                         <select name="country" class="form-control" ng-model="item.ConditionType">
-                                            <option value="{{x}}" ng-repeat=" x in comparisonType">
+                                            <option value="{{x}}" ng-repeat=" x in conditionType">
                                                 {{x}}
                                             </option>
                                         </select>
@@ -106,12 +106,12 @@
                                         <input type="text" class="form-control" ng-model="item.Condition" placeholder="...">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-default" style="color:#444444;border-color:#E3E3E3" data-toggle="collapse" data-target="#{{item.Id}}">Seçiminiz.........</button>
+                                        <button type="button" class="btn btn-default" style="color:#444444;border-color:#E3E3E3" data-toggle="collapse" data-target="#{{item.Id}}">{{regulationCount}} Selected</button>
                                         <div id="{{item.Id}}" class="collapse">
                                             <ul class="set-data-field">
                                                 <li ng-repeat="x in regulation">
                                                     <input type="checkbox"
-                                                           ng-checked="item.FieldRegulation.SetDataFieldValue.indexOf(x)>-1"
+                                                           ng-checked="item.Regulation.SetDataFieldValue.indexOf(x)>-1"
                                                            ng-click="setDataFieldSelection(x,item.Id)"
                                                            value="{{x.Id}}">{{x.Name}}
                                                 </li>
@@ -183,12 +183,12 @@
         </div> <!-- wizard container -->
     </div>
     <!--Silincek-->
-    @*<br />
+    <br />
             <div class="row">
                  <pre>
                         {{modelAsJson}}
         </pre>
-            </div>*@
+            </div>
     <!--****************************-->
 </div><!-- end row -->
 

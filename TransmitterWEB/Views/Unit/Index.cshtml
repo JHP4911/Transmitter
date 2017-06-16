@@ -16,11 +16,17 @@
                     <h3 class="box-title">{{field.Name}}</h3>
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool"
+                                ng-click="editField(field.Id)"
+                                data-toggle="tooltip"
+                                data-placement="top" title="Send DashBoard">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </button>
+                        <button class="btn btn-box-tool"
                                 ng-click="sendDashBoard(field.Id)"
                                 data-toggle="tooltip"
                                 data-placement="top" title="Send DashBoard">
                             <i class="fa fa-share-square-o"></i>
-                        </button>                    
+                        </button>
                     </div>
                 </div>
                 <div ng-if="field.fieldType!='Location'" class="box-body">
@@ -39,6 +45,105 @@
         <!-- /.Line chart -->
         <!--/charts-->
 
+    </div>
+    <div class="row">
+        <pre>
+                        {{modelAsJson}}
+        </pre>
+        </div>
+
+    <div class="row">
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit Field Rules</h4>
+
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <table class="table ">
+                                    <tr>
+                                        <td><label>Field Name</label></td>
+                                        <td colspan="2">
+                                            <input type="text" disabled ng-model="editFieldData.Name" class="form-control" placeholder="...">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cosdition</td>
+                                        <td colspan="2">Condition Value</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="editFieldData.Condition" placeholder="...">
+
+                                        </td>
+                                        <td colspan="2">
+                                            <select name="country" class="form-control" ng-model="editFieldData.ConditionType">
+                                                <option value="{{x}}" ng-repeat=" x in conditionType">
+                                                    {{x}}
+                                                </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Regulation</label></td>
+                                        <td><label>Set Field</label></td>
+                                        <td><label>Default Value</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="button" class="btn btn-default" style="color:#444444;border-color:#E3E3E3" data-toggle="collapse" data-target="#{{editFieldData.Id}}">{{regulationCount}} Selected</button>
+                                            <div id="{{editFieldData.Id}}" class="collapse">
+                                                <ul class="set-data-field">
+                                                    <li ng-repeat="x in regulation">
+                                                        <input type="checkbox"
+                                                               ng-checked=""
+                                                               ng-click="setDataFieldSelection(x,Unit.Id)"
+                                                               value="{{x.Id}}">{{x.Name}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="editFieldData.CheckValue" placeholder="...">
+
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="editFieldData.DefaultFieldValue" placeholder="...">
+
+                                        </td>
+
+
+                                    </tr>
+
+                                </table>
+                                
+                          
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="text-align:left"><button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()">Save</button> </td>
+                                    <td style="text-align:right"><button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button> </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </div>
