@@ -84,12 +84,14 @@
 
     //Finish
     function finish() {
-        $scope.exampleWrite = $location.host() + "/api/Data/Set?" + $scope.finishData.Id + "&";
-        $scope.exampleRead = $location.host() + "/api/Data/Read?" + $scope.finishData.Id + "&fieldKey=";
+        $scope.exampleWrite = $location.host() + "/api/Data/Set?appKey=" + $scope.finishData.Id + "&";
+        $scope.exampleRead = $location.host() + "/api/Data/Read?appKey=" + $scope.finishData.Id + "&fieldKey=";
 
         angular.forEach($scope.finishData.Fields, function (value, key) {
-            $scope.exampleWrite += value.Id + "=30" 
+            $scope.exampleWrite += value.Id + "=30&" 
         });
+
+        $scope.exampleWrite = $scope.exampleWrite.substring(0, $scope.exampleWrite.length - 1);
         $scope.exampleRead += $scope.finishData.Fields[0].Id
     }
 
