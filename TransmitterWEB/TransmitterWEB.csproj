@@ -870,6 +870,9 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\charts\angular-chart.js" />
+    <Content Include="Scripts\charts\angular-chart.min.js" />
+    <Content Include="Scripts\charts\angular-flot.min.js" />
     <Content Include="Scripts_\app.js" />
     <Content Include="Scripts_\Dashboard\index.js" />
     <Content Include="Scripts_\Profile\index.js" />

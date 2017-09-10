@@ -16,9 +16,11 @@ namespace TransmitterWEB.WebApi
     {
         
         IFieldValueService _service;
-        public DataController(IFieldValueService service)
+        IFieldService _fieldservice;
+        public DataController(IFieldValueService service, IFieldService fieldservice)
         {
             _service = service;
+            _fieldservice = fieldservice;
         }
         [HttpGet]
         public void Set()
@@ -53,7 +55,8 @@ namespace TransmitterWEB.WebApi
         {
             var appKey = Guid.Parse(HttpContext.Current.Request.QueryString.GetValues("appKey").FirstOrDefault());
             var fieldKey = Guid.Parse(HttpContext.Current.Request.QueryString.GetValues("fieldKey").FirstOrDefault());
-            return _service.GetAll().Where(x => x.FieldId == fieldKey && x.Field.UnitId == appKey).FirstOrDefault().Field.CheckValue;
+            var a= _fieldservice.GetAll().Where(x => x.Id == fieldKey && x.UnitId == appKey).FirstOrDefault().CheckValue;
+            return a;
         }
     }
 }

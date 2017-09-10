@@ -1,4 +1,4 @@
-﻿app.controller("unitController", ['$scope', '$http', function ($scope, $http) {
+﻿app.controller("unitController", ['$scope', '$http','$location', function ($scope, $http,$location) {
 
     $scope.fields = [];
     $scope.regulationCount = 0;
@@ -11,7 +11,13 @@
 
         });
 
-
+    $scope.delete = function (Id) {
+        console.log($scope.fields)
+        $http.get("../api/Unit/DeleteUnit/"+ Id)
+         .then(function (response) {
+             window.location = "/";
+         });
+    }
     $scope.editField = function (Id) {
         $http.get("../api/Field/GetById/"+Id)
             .then(function (response) {

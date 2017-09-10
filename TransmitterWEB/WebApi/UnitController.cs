@@ -40,5 +40,12 @@ namespace TransmitterWEB.WebApi
             model.CustomerId =Guid.Parse(User.Identity.GetCustomerId());
             return base.Insert(model);
         }
+        [HttpGet]
+        public void DeleteUnit(string Id)
+        {
+            var entity = _service.GetById(Id);
+            base.Delete(entity);
+        }
+        
     }
 }

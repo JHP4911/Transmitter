@@ -486,7 +486,7 @@ namespace TransmitterWEB.Controllers
             }
         }
 
-        public ICustomerService CustomerSrv { get => _customerSrv; set => _customerSrv = value; }
+    //    public ICustomerService CustomerSrv { get => _customerSrv; set => _customerSrv = value; }
 
         private void AddErrors(IdentityResult result)
         {

@@ -32,21 +32,59 @@ namespace Bussines
 
         private void checkFieldRegulation(Field field, FieldValue item)
         {
-
-            //switch (rule.ConditionType)
+            field.CheckValue = item.Value;
+            //if (field.FieldType.Name == "String")
             //{
-            //case CONDITION_TYPE.BUYUK:
-            //    if(item.Value>rule.Condition)
-            //    break;
-            //case CONDITION_TYPE.KUCUK:
-            //    break;
-            //case CONDITION_TYPE.ESIT:
-            //    break;
-            //case CONDITION_TYPE.FARKLI:
-            //    break;
-            //default:
-            //    break;
-            // }
+            //    switch (field.ConditionType)
+            //    {
+            //        case CONDITION_TYPE.ESIT:
+            //            if (float.Parse(item.Value) == float.Parse(field.Condition))
+            //                field.CheckValue = field.SetDataFieldValue;
+            //            else
+            //                field.CheckValue = field.DefaultFieldValue;
+            //            break;
+            //        case CONDITION_TYPE.FARKLI:
+            //            if (float.Parse(item.Value) != float.Parse(field.Condition))
+            //                field.CheckValue = field.SetDataFieldValue;
+            //            else
+            //                field.CheckValue = field.DefaultFieldValue;
+            //            break;
+            //        default:
+                        
+            //            break;
+            //    }
+            //}
+            //else
+            //    switch (field.ConditionType)
+            //    {
+            //        case CONDITION_TYPE.BUYUK:
+            //            if (float.Parse(item.Value) > float.Parse(field.Condition))
+            //                field.CheckValue = field.SetDataFieldValue;
+            //            else
+            //                field.CheckValue = field.DefaultFieldValue;
+            //            break;
+            //        case CONDITION_TYPE.KUCUK:
+            //            if (float.Parse(item.Value) < float.Parse(field.Condition))
+            //                field.CheckValue = field.SetDataFieldValue;
+            //            else
+            //                field.CheckValue = field.DefaultFieldValue;
+            //            break;
+            //        case CONDITION_TYPE.ESIT:
+            //            if (float.Parse(item.Value) == float.Parse(field.Condition))
+            //                field.CheckValue = field.SetDataFieldValue;
+            //            else
+            //                field.CheckValue = field.DefaultFieldValue;
+            //            break;
+            //        case CONDITION_TYPE.FARKLI:
+            //            if (float.Parse(item.Value) != float.Parse(field.Condition))
+            //                field.CheckValue = field.SetDataFieldValue;
+            //            else
+            //                field.CheckValue = field.DefaultFieldValue;
+            //            break;
+            //        default:
+            //            field.CheckValue = item.Value;
+            //            break;
+            //    }
 
         }
     }

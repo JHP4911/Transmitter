@@ -6,6 +6,7 @@
     });
 }
 <div ng-controller="unitController" ng-init="initController('@ViewBag.Id')">
+    <button class="btn btn-danger btn-sm" ng-click="delete('@ViewBag.Id')">Delete</button>
     <div class="row">
         <!-- Line chart -->
         <div ng-repeat="field in fields"
