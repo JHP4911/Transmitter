@@ -2,7 +2,7 @@
 
 namespace TransmitterWEB.WebApi
 {
-    [Authorize]
+   // [Authorize]
     public abstract class _baseApiController : ApiController
     {
     

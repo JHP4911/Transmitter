@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Data
 {
     public class FieldValueMainModel
     {
-        public List<FieldValueModel> Values { get; set; }
+        public string apiKey { get; set; }
+        public List<FieldValueModel> records { get; set; }
     }
     public class FieldValueModel
     {
-        public string FieldKey { get; set; }
-        public string FieldValue { get; set; }
+        public string Id { get; set; }
+        public string name { get; set; }
+        public string value { get; set; }
+        public string date { get; set; }
     }
 }

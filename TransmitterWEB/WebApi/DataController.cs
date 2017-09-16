@@ -14,7 +14,7 @@ namespace TransmitterWEB.WebApi
     [AllowAnonymous]
     public class DataController : _baseApiController
     {
-        
+
         IFieldValueService _service;
         IFieldService _fieldservice;
         public DataController(IFieldValueService service, IFieldService fieldservice)
@@ -46,8 +46,22 @@ namespace TransmitterWEB.WebApi
             _service.InsertValue(appKey, values);
         }
         [HttpPost]
-        public void SetPost([FromBody]FieldValueMainModel data)
+        public void Set([FromBody]FieldValueMainModel data)
         {
+            List<FieldValue> values = new List<FieldValue>();
+            FieldValue item;
+            foreach (var record in data.records)
+            {
+                item = new FieldValue()
+                {
+                    FieldId = Guid.Parse(record.Id),
+                    Value = record.value,
+                    CreateTime = DateTime.Parse(record.date)
+                };
+                values.Add(item);
+            }
+
+            _service.InsertValue(data.apiKey, values);
 
         }
         [HttpGet]
@@ -55,7 +69,7 @@ namespace TransmitterWEB.WebApi
         {
             var appKey = Guid.Parse(HttpContext.Current.Request.QueryString.GetValues("appKey").FirstOrDefault());
             var fieldKey = Guid.Parse(HttpContext.Current.Request.QueryString.GetValues("fieldKey").FirstOrDefault());
-            var a= _fieldservice.GetAll().Where(x => x.Id == fieldKey && x.UnitId == appKey).FirstOrDefault().CheckValue;
+            var a = _fieldservice.GetAll().Where(x => x.Id == fieldKey && x.UnitId == appKey).FirstOrDefault().CheckValue;
             return a;
         }
     }

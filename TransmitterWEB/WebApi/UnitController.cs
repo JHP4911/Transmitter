@@ -46,6 +46,17 @@ namespace TransmitterWEB.WebApi
             var entity = _service.GetById(Id);
             base.Delete(entity);
         }
-        
+
+        [HttpGet]
+        public object getFields(string Id)
+        {
+            var entity = _service.GetById(Id);
+            var result = entity.Fields.Select(x => new
+            {
+                x.Name,x.Id,lastValue=x.CheckValue 
+            }).ToList();
+            return result;
+        }
+
     }
 }
